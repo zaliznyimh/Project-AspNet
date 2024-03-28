@@ -72,8 +72,7 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var listOfSubjects = _context.Subject
-                .ToList();
+            var listOfSubjects = _databaseService.GetListOfSubjects();
             var newStudent = new Student();
             newStudent.AvailableSubjects = listOfSubjects;
 
@@ -94,47 +93,22 @@ public class StudentsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(int id, string name, int age, string major, int[] subjectIdDst)
     {
-        IActionResult result = View();
+        IActionResult result;
+
         try
         {
-            var chosenSubjects = _context.Subject
-                .Where(s => subjectIdDst.Contains(s.Id))
-                .ToList();
-            var availableSubjects = _context.Subject
-                .Where(s => !subjectIdDst.Contains(s.Id))
-                .ToList();
-            var student = new Student()
+            var newStudent = await _databaseService.CreateStudentAsync(id, name, age, major, subjectIdDst);
+            if (!newStudent)
             {
-                Id = id,
-                Name = name,
-                Age = age,
-                Major = major,
-                AvailableSubjects = availableSubjects
-            };
-            foreach (var chosenSubject in chosenSubjects)
-            {
-                student.AddSubject(chosenSubject);
+                throw new Exception("Error saving changes to the database.");
             }
-            if (ModelState.IsValid)
-            {
-                _context.Add(student);
-                var additionResult = await _context.SaveChangesAsync();
-                if (additionResult == 0)
-                {
-                    throw new Exception("Error saving changes to the database.");
-                }
-                result = RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                result = View(student);
-            }
+            result = RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
             _logger.LogError("Exception caught: " + ex.Message);
+            result = View();
         }
-
         return result;
     }
 

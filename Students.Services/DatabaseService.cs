@@ -2,7 +2,7 @@
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Students.Services;
 
@@ -86,14 +86,14 @@ public class DatabaseService : IDatabaseService
         }
         catch (Exception ex)
         {
-           _logger.LogError("Exception caught in DisplayStudent: " + ex);
+            _logger.LogError("Exception caught in DisplayStudent: " + ex);
         }
 
         return student;
     }
 
     public async Task<List<Student>> GetStudentsList()
-    {   
+    {
         var studentList = new List<Student>();
         try
         {
@@ -104,6 +104,56 @@ public class DatabaseService : IDatabaseService
             _logger.LogError("Exception caught in GetStudentList: " + ex);
         }
         return studentList;
+    }
+
+    public List<Subject> GetListOfSubjects()
+    {
+        var listOfSubjects = new List<Subject>();
+        try
+        {
+            listOfSubjects = _context.Subject.ToList();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught in GetListOfSubjects: " + ex);
+        }
+        return listOfSubjects;
+    }
+
+    public async Task<bool> CreateStudentAsync(int id, string name, int age, string major, int[] subjectIdDst)
+    {
+        var result = false;
+        try
+        {
+            var chosenSubjects = _context.Subject
+                .Where(s => subjectIdDst.Contains(s.Id))
+                .ToList();
+            var availableSubjects = _context.Subject
+                .Where(s => !subjectIdDst.Contains(s.Id))
+                .ToList();
+            var student = new Student()
+            {
+                Id = id,
+                Name = name,
+                Age = age,
+                Major = major,
+                AvailableSubjects = availableSubjects
+            };
+            foreach (var chosenSubject in chosenSubjects)
+            {
+                student.AddSubject(chosenSubject);
+            }
+            await _context.Student.AddAsync(student);
+            var saveResult = await _context.SaveChangesAsync();
+            result = saveResult > 0;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught: " + ex.Message);
+            
+        }
+
+        return result;
     }
 
     #endregion // Public Methods
