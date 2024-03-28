@@ -1,1 +1,1 @@
-# Task01_AspNetCore
+Project to study the AspNet Core platform
