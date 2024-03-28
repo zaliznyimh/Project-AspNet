@@ -92,5 +92,19 @@ public class DatabaseService : IDatabaseService
         return student;
     }
 
+    public List<Student>? GetStudentsList()
+    {   
+        var studentList = new List<Student>();
+        try
+        {
+            studentList = _context.Student.ToList();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught in GetStudentList: " + ex);
+        }
+        return studentList;
+    }
+
     #endregion // Public Methods
 }

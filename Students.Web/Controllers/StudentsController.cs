@@ -38,8 +38,8 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var model = await _context.Student.ToListAsync();
-            result = View(model);
+            var studentsList = _databaseService.GetStudentsList();
+            result = View(studentsList);
         }
         catch (Exception ex)
         {
@@ -77,7 +77,7 @@ public class StudentsController : Controller
             var newStudent = new Student();
             newStudent.AvailableSubjects = listOfSubjects;
 
-             result = View(newStudent);
+            result = View(newStudent);
         }
         catch (Exception ex)
         {
