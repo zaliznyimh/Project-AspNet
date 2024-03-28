@@ -91,7 +91,7 @@ public class DatabaseService : IDatabaseService
         return student;
     }
 
-    public async Task<List<Student>> GetStudentsList()
+    public async Task<List<Student>> GetStudentsListAsync()
     {
         var studentList = new List<Student>();
         try
@@ -149,13 +149,12 @@ public class DatabaseService : IDatabaseService
         catch (Exception ex)
         {
             _logger.LogError("Exception caught: " + ex.Message);
-            
         }
 
         return result;
     }
 
-    public async Task<Student?> EditStudent(int? id)
+    public async Task<Student?> GetStudentWithAvailableSubjects(int? id)
     {
         Student? student = await _context.Student.FindAsync(id);
         try
@@ -181,6 +180,30 @@ public class DatabaseService : IDatabaseService
         }
         return student;
     }
+
+    public async Task<bool?> DeleteStudentAsync(int? id)
+    {
+        var result = false;
+        try
+        {
+            var student = await _context.Student.FindAsync(id);
+            if (student != null)
+            {
+                _context.Student.Remove(student);
+            }
+
+            await _context.SaveChangesAsync();
+            var saveResult = await _context.SaveChangesAsync();
+            result = saveResult > 0;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught: " + ex.Message);
+        }
+        return result;
+    }
+
+
 
     #endregion // Public Methods
 }

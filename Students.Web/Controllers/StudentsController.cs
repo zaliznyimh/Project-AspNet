@@ -38,7 +38,7 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var studentsList = await _databaseService.GetStudentsList();
+            var studentsList = await _databaseService.GetStudentsListAsync();
             result = View(studentsList);
         }
         catch (Exception ex)
@@ -121,7 +121,7 @@ public class StudentsController : Controller
         {
             if (id != null)
             {
-                var student = await _databaseService.EditStudent(id);
+                var student = await _databaseService.GetStudentWithAvailableSubjects(id);
                 result = View(student);
             }
         }
@@ -166,7 +166,7 @@ public class StudentsController : Controller
 
 
     // GET: Students/Delete/5
-    public async Task<IActionResult> Delete(int? id)
+    public IActionResult Delete(int? id)
     {
         IActionResult result = View();
         try
@@ -177,9 +177,7 @@ public class StudentsController : Controller
             }
             else
             {
-
-                var student = await _context.Student
-                    .FirstOrDefaultAsync(m => m.Id == id);
+                var student = _databaseService.DisplayStudentDetails(id);
                 if (student == null)
                 {
                     result = NotFound();
@@ -206,13 +204,7 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var student = await _context.Student.FindAsync(id);
-            if (student != null)
-            {
-                _context.Student.Remove(student);
-            }
-
-            await _context.SaveChangesAsync();
+            var student = await _databaseService.DeleteStudentAsync(id);
             result = RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
