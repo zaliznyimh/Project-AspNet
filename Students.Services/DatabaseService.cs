@@ -92,12 +92,12 @@ public class DatabaseService : IDatabaseService
         return student;
     }
 
-    public List<Student>? GetStudentsList()
+    public async Task<List<Student>> GetStudentsList()
     {   
         var studentList = new List<Student>();
         try
         {
-            studentList = _context.Student.ToList();
+            studentList = await _context.Student.ToListAsync();
         }
         catch (Exception ex)
         {

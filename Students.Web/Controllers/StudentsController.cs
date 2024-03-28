@@ -38,7 +38,7 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var studentsList = _databaseService.GetStudentsList();
+            var studentsList = await _databaseService.GetStudentsList();
             result = View(studentsList);
         }
         catch (Exception ex)

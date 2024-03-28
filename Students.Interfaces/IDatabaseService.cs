@@ -8,6 +8,6 @@ public interface IDatabaseService
 
     Student? DisplayStudent(int? id);
     
-    public List<Student>? GetStudentsList();
+    public Task<List<Student>> GetStudentsList();
 
 }
