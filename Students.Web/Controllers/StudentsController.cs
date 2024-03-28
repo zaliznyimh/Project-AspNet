@@ -17,8 +17,8 @@ public class StudentsController : Controller
     private readonly IDatabaseService _databaseService;
 
     public StudentsController(
-        StudentsContext context, 
-        ILogger<StudentsController> logger, 
+        StudentsContext context,
+        ILogger<StudentsController> logger,
         ISharedResourcesService sharedResourcesService,
         IDatabaseService databaseService)
     {
@@ -56,7 +56,8 @@ public class StudentsController : Controller
 
         try
         {
-            var student = _databaseService.DisplayStudent(id);
+            var student = _databaseService.DisplayStudentDetails(id);
+            result = View(student);
         }
         catch (Exception ex)
         {
@@ -116,27 +117,12 @@ public class StudentsController : Controller
     public async Task<IActionResult> Edit(int? id)
     {
         IActionResult result = NotFound();
-
         try
         {
             if (id != null)
             {
-                var student = await _context.Student.FindAsync(id);
-                if (student != null)
-                {
-                    var chosenSubjects = _context.StudentSubject
-                        .Where(ss => ss.StudentId == id)
-                        .Select(ss => ss.Subject)
-                        .ToList();
-                    var availableSubjects = _context.Subject
-                        .Where(s => !chosenSubjects.Contains(s))
-                        .ToList();
-                    student.StudentSubjects = _context.StudentSubject
-                        .Where(x => x.StudentId == id)
-                        .ToList();
-                    student.AvailableSubjects = availableSubjects;
-                    result = View(student);
-                }
+                var student = await _databaseService.EditStudent(id);
+                result = View(student);
             }
         }
         catch (Exception ex)

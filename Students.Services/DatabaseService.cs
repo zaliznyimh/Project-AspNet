@@ -68,13 +68,12 @@ public class DatabaseService : IDatabaseService
         return result;
     }
 
-    public Student? DisplayStudent(int? id)
+    public Student? DisplayStudentDetails(int? id)
     {
         Student? student = null;
         try
         {
-            student = _context.Student
-                .FirstOrDefault(m => m.Id == id);
+            student = _context.Student.FirstOrDefault(m => m.Id == id);
             if (student is not null)
             {
                 var studentSubjects = _context.StudentSubject
@@ -154,6 +153,33 @@ public class DatabaseService : IDatabaseService
         }
 
         return result;
+    }
+
+    public async Task<Student?> EditStudent(int? id)
+    {
+        Student? student = await _context.Student.FindAsync(id);
+        try
+        {
+                if (student is not null)
+                {
+                    var chosenSubjects = _context.StudentSubject
+                        .Where(ss => ss.StudentId == id)
+                        .Select(ss => ss.Subject)
+                        .ToList();
+                    var availableSubjects = _context.Subject
+                        .Where(s => !chosenSubjects.Contains(s))
+                        .ToList();
+                    student.StudentSubjects = _context.StudentSubject
+                        .Where(x => x.StudentId == id)
+                        .ToList();
+                    student.AvailableSubjects = availableSubjects;
+                }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught in EditStudent: " + ex.Message);
+        }
+        return student;
     }
 
     #endregion // Public Methods
