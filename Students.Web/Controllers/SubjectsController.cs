@@ -7,22 +7,27 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Students.Common.Data;
 using Students.Common.Models;
+using Students.Interfaces;
 
 namespace Students.Web.Controllers;
 
 public class SubjectsController : Controller
 {
     private readonly StudentsContext _context;
+    private readonly IDatabaseService _databaseService;
 
-    public SubjectsController(StudentsContext context)
+    public SubjectsController(StudentsContext context,
+                            IDatabaseService databaseService)
     {
         _context = context;
+        _databaseService = databaseService;
     }
 
     // GET: Subjects
     public async Task<IActionResult> Index()
     {
-        return View(await _context.Subject.ToListAsync());
+        var result = await _databaseService.GetListOfSubjects();
+        return View(result);
     }
 
     // GET: Subjects/Details/5
@@ -58,8 +63,7 @@ public class SubjectsController : Controller
     {
         if (ModelState.IsValid)
         {
-            _context.Add(subject);
-            await _context.SaveChangesAsync();
+            var result = await _databaseService.CreateSubject(subject);
             return RedirectToAction(nameof(Index));
         }
         return View(subject);

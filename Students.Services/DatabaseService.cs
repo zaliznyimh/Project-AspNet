@@ -105,12 +105,12 @@ public class DatabaseService : IDatabaseService
         return studentList;
     }
 
-    public List<Subject> GetListOfSubjects()
+    public async Task<List<Subject>> GetListOfSubjects()
     {
         var listOfSubjects = new List<Subject>();
         try
         {
-            listOfSubjects = _context.Subject.ToList();
+            listOfSubjects = await _context.Subject.ToListAsync();
         }
         catch (Exception ex)
         {
@@ -203,7 +203,14 @@ public class DatabaseService : IDatabaseService
         return result;
     }
 
-
+    public async Task<bool> CreateSubject(Subject subject)
+    {
+        var result = false; 
+        await _context.AddAsync(subject);
+        var saveResult = await _context.SaveChangesAsync();
+        result = saveResult > 0;
+        return result;
+    }
 
     #endregion // Public Methods
 }

@@ -10,7 +10,7 @@ public interface IDatabaseService
     
     public Task<List<Student>> GetStudentsListAsync();
 
-    public List<Subject> GetListOfSubjects();
+    public Task<List<Subject>> GetListOfSubjects();
 
     public Task<bool> CreateStudentAsync(int id, string name, int age, string major, int[] subjectIdDst);
 
@@ -18,5 +18,6 @@ public interface IDatabaseService
 
     public Task<bool?> DeleteStudentAsync(int? id);
 
-    // public Task<bool> DeleteStudentAsync();
+    public Task<bool> CreateSubject(Subject subject);
+
 }

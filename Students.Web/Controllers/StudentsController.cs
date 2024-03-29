@@ -68,12 +68,12 @@ public class StudentsController : Controller
     }
 
     // GET: Students/Create
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
         IActionResult result = View();
         try
         {
-            var listOfSubjects = _databaseService.GetListOfSubjects();
+            var listOfSubjects = await _databaseService.GetListOfSubjects();
             var newStudent = new Student();
             newStudent.AvailableSubjects = listOfSubjects;
 
