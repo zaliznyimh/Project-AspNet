@@ -127,22 +127,34 @@
     <value>Utwórz</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Kredyty</value>
+    <value>Ilość kredytów</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Usuń</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Wyświetl</value>
+    <value>Szczegółowe informacje</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edytuj</value>
   </data>
+  <data name="IndexOfSubject" xml:space="preserve">
+    <value>Indeks przedmiotu</value>
+  </data>
   <data name="Major" xml:space="preserve">
     <value>Kierunek</value>
   </data>
+  <data name="Modification" xml:space="preserve">
+    <value>Edycja</value>
+  </data>
   <data name="Name" xml:space="preserve">
-    <value>Nazwa</value>
+    <value>Nazwa przedmiotu</value>
+  </data>
+  <data name="Removal" xml:space="preserve">
+    <value>Usunięcie</value>
+  </data>
+  <data name="RemovalConfirm" xml:space="preserve">
+    <value>Czy na pewno chcesz usunąć ten przedmiot?</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Zapisz</value>

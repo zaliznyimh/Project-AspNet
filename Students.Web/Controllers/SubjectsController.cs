@@ -26,7 +26,7 @@ public class SubjectsController : Controller
     // GET: Subjects
     public async Task<IActionResult> Index()
     {
-        var result = await _databaseService.GetListOfSubjects();
+        var result = await _databaseService.GetSubjectsList();
         return View(result);
     }
 
@@ -63,7 +63,7 @@ public class SubjectsController : Controller
     {
         if (ModelState.IsValid)
         {
-            var result = await _databaseService.CreateSubject(subject);
+            var result = await _databaseService.CreateSubjectAsync(subject);
             return RedirectToAction(nameof(Index));
         }
         return View(subject);
@@ -77,7 +77,7 @@ public class SubjectsController : Controller
             return NotFound();
         }
 
-        var subject = await _context.Subject.FindAsync(id);
+        var subject = await _databaseService.GetSubjectToEditAsync(id);
         if (subject == null)
         {
             return NotFound();
@@ -101,8 +101,7 @@ public class SubjectsController : Controller
         {
             try
             {
-                _context.Update(subject);
-                await _context.SaveChangesAsync();
+               await _databaseService.EditSubject(subject);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -128,8 +127,7 @@ public class SubjectsController : Controller
             return NotFound();
         }
 
-        var subject = await _context.Subject
-            .FirstOrDefaultAsync(m => m.Id == id);
+        var subject = await _databaseService.GetSubjectToDelete(id);
         if (subject == null)
         {
             return NotFound();
@@ -143,18 +141,13 @@ public class SubjectsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var subject = await _context.Subject.FindAsync(id);
-        if (subject != null)
-        {
-            _context.Subject.Remove(subject);
-        }
-
-        await _context.SaveChangesAsync();
+        await _databaseService.DeleteSubject(id);
         return RedirectToAction(nameof(Index));
     }
 
     private bool SubjectExists(int id)
     {
-        return _context.Subject.Any(e => e.Id == id);
+        var result = _databaseService.CheckSubjectExists(id);
+        return result;
     }
 }

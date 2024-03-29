@@ -105,7 +105,7 @@ public class DatabaseService : IDatabaseService
         return studentList;
     }
 
-    public async Task<List<Subject>> GetListOfSubjects()
+    public async Task<List<Subject>> GetSubjectsList()
     {
         var listOfSubjects = new List<Subject>();
         try
@@ -203,7 +203,7 @@ public class DatabaseService : IDatabaseService
         return result;
     }
 
-    public async Task<bool> CreateSubject(Subject subject)
+    public async Task<bool> CreateSubjectAsync(Subject subject)
     {
         var result = false; 
         await _context.AddAsync(subject);
@@ -212,5 +212,45 @@ public class DatabaseService : IDatabaseService
         return result;
     }
 
+    public async Task<Subject?> GetSubjectToEditAsync(int? id)
+    {
+        var subject = await _context.Subject.FindAsync(id);
+        return subject;
+    }
+
+    public async Task<Subject?> EditSubject(Subject subject)
+    {
+        _context.Update(subject);
+        var saveResult = await _context.SaveChangesAsync();
+        var result = saveResult > 0;
+        return subject;
+    }
+
+    public async Task<Subject?> GetSubjectToDelete(int? id)
+    {
+        var subject = await _context.Subject.
+                            FirstOrDefaultAsync(m => m.Id == id);
+        return subject;
+    }
+
+    public async Task<bool> DeleteSubject(int? id)
+    {
+        var result = false;
+        var subject = await _context.Subject.FindAsync(id);
+        if (subject != null)
+        {
+            _context.Subject.Remove(subject);
+        }
+
+        var saveResult = await _context.SaveChangesAsync();
+        result = saveResult > 0;
+        return result;
+    }
+
+    public bool CheckSubjectExists(int id)
+    {
+        var result = _context.Subject.Any(e => e.Id == id);
+        return result;
+    }
     #endregion // Public Methods
 }

@@ -73,7 +73,7 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var listOfSubjects = await _databaseService.GetListOfSubjects();
+            var listOfSubjects = await _databaseService.GetSubjectsList();
             var newStudent = new Student();
             newStudent.AvailableSubjects = listOfSubjects;
 
