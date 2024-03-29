@@ -135,6 +135,9 @@
   <data name="Credits" xml:space="preserve">
     <value>クレジット</value>
   </data>
+  <data name="Data" xml:space="preserve">
+    <value>データ</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>削除</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Edit" xml:space="preserve">
     <value>編集</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>メインページ</value>
   </data>
   <data name="HomeScreen" xml:space="preserve">
     <value>これは私のAspNet Coreプラットフォーム上のプロジェクトです</value>
@@ -185,6 +191,9 @@
   </data>
   <data name="StudentName" xml:space="preserve">
     <value>名前と姓</value>
+  </data>
+  <data name="Students" xml:space="preserve">
+    <value>学生</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>科目</value>

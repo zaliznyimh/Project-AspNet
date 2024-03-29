@@ -135,6 +135,9 @@
   <data name="Credits" xml:space="preserve">
     <value>Credits</value>
   </data>
+  <data name="Data" xml:space="preserve">
+    <value>Daten</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Löschen</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Bearbeiten</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Hauptseite</value>
   </data>
   <data name="HomeScreen" xml:space="preserve">
     <value>Dies ist mein Projekt auf der AspNet Core Plattform</value>
@@ -185,6 +191,9 @@
   </data>
   <data name="StudentName" xml:space="preserve">
     <value>Vorname Nachname</value>
+  </data>
+  <data name="Students" xml:space="preserve">
+    <value>Studierende</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Fach</value>

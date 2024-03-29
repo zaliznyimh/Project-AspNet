@@ -135,6 +135,9 @@
   <data name="Credits" xml:space="preserve">
     <value>Ilość kredytów</value>
   </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Usuń</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edytuj</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Strona główna</value>
   </data>
   <data name="HomeScreen" xml:space="preserve">
     <value>To jest mój projekt na platformie AspNet Core</value>
@@ -186,6 +192,9 @@ Wprowadzone tutaj informacje nie będą przekazywane osobom trzecim.</value>
   </data>
   <data name="StudentName" xml:space="preserve">
     <value>Imię i nazwisko</value>
+  </data>
+  <data name="Students" xml:space="preserve">
+    <value>Studenci</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Przedmiot</value>
