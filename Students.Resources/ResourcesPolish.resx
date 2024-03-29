@@ -138,6 +138,9 @@
   <data name="Edit" xml:space="preserve">
     <value>Edytuj</value>
   </data>
+  <data name="HomeScreen" xml:space="preserve">
+    <value>To jest mój projekt na platformie AspNet Core</value>
+  </data>
   <data name="IndexOfSubject" xml:space="preserve">
     <value>Indeks przedmiotu</value>
   </data>
@@ -149,6 +152,13 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nazwa przedmiotu</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Polityka prywatności</value>
+  </data>
+  <data name="PrivacyDesc" xml:space="preserve">
+    <value>Ta strona nie zbiera informacji osobistych.
+Wprowadzone tutaj informacje nie będą przekazywane osobom trzecim.</value>
   </data>
   <data name="Removal" xml:space="preserve">
     <value>Usunięcie</value>
@@ -164,5 +174,8 @@
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Przedmiot</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Witaj</value>
   </data>
 </root>

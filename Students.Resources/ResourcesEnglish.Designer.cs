@@ -124,6 +124,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на This is my project on the AspNet Core platform.
+        /// </summary>
+        public static string HomeScreen {
+            get {
+                return ResourceManager.GetString("HomeScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Index.
         /// </summary>
         public static string IndexOfSubject {
@@ -156,6 +165,24 @@ namespace Students.Resources {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Privacy Policy.
+        /// </summary>
+        public static string Privacy {
+            get {
+                return ResourceManager.GetString("Privacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на This website does not collect personal information. The information entered here will not be passed on to third parties..
+        /// </summary>
+        public static string PrivacyDesc {
+            get {
+                return ResourceManager.GetString("PrivacyDesc", resourceCulture);
             }
         }
         
@@ -201,6 +228,15 @@ namespace Students.Resources {
         public static string Subject {
             get {
                 return ResourceManager.GetString("Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Welcome.
+        /// </summary>
+        public static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
     }

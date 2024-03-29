@@ -124,6 +124,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на To jest mój projekt na platformie AspNet Core.
+        /// </summary>
+        public static string HomeScreen {
+            get {
+                return ResourceManager.GetString("HomeScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Indeks przedmiotu.
         /// </summary>
         public static string IndexOfSubject {
@@ -156,6 +165,25 @@ namespace Students.Resources {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Polityka prywatności.
+        /// </summary>
+        public static string Privacy {
+            get {
+                return ResourceManager.GetString("Privacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ta strona nie zbiera informacji osobistych.
+        ///Wprowadzone tutaj informacje nie będą przekazywane osobom trzecim..
+        /// </summary>
+        public static string PrivacyDesc {
+            get {
+                return ResourceManager.GetString("PrivacyDesc", resourceCulture);
             }
         }
         
@@ -201,6 +229,15 @@ namespace Students.Resources {
         public static string Subject {
             get {
                 return ResourceManager.GetString("Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Witaj.
+        /// </summary>
+        public static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
     }
