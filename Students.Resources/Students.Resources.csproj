@@ -11,10 +11,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="ResourcesGerman.Designer.cs">
+      <DependentUpon>ResourcesGerman.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="ResourcesEnglish.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ResourcesEnglish.resx</DependentUpon>
+    </Compile>
+    <Compile Update="ResourcesJapanese.Designer.cs">
+      <DependentUpon>ResourcesJapanese.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Update="ResourcesPolish.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -24,9 +34,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="ResourcesGerman.resx">
+      <LastGenOutput>ResourcesGerman.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="ResourcesEnglish.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesEnglish.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ResourcesJapanese.resx">
+      <LastGenOutput>ResourcesJapanese.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ResourcesPolish.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

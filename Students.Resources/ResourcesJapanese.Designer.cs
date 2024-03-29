@@ -22,14 +22,14 @@ namespace Students.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ResourcesEnglish {
+    public class ResourcesJapanese {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourcesEnglish() {
+        internal ResourcesJapanese() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Students.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Students.Resources.ResourcesEnglish", typeof(ResourcesEnglish).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Students.Resources.ResourcesJapanese", typeof(ResourcesJapanese).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Age.
+        ///   Ищет локализованную строку, похожую на 年齢.
         /// </summary>
         public static string Age {
             get {
@@ -70,7 +70,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Available subjects.
+        ///   Ищет локализованную строку, похожую на 利用可能な科目.
         /// </summary>
         public static string AvailableSubjects {
             get {
@@ -79,7 +79,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Back to List.
+        ///   Ищет локализованную строку, похожую на リストに戻る.
         /// </summary>
         public static string BackToList {
             get {
@@ -88,7 +88,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Chosen subjects.
+        ///   Ищет локализованную строку, похожую на 選択された科目作成.
         /// </summary>
         public static string ChosenSubjects {
             get {
@@ -97,7 +97,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Create.
+        ///   Ищет локализованную строку, похожую на セットアップ.
         /// </summary>
         public static string Create {
             get {
@@ -106,7 +106,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Credits.
+        ///   Ищет локализованную строку, похожую на クレジット.
         /// </summary>
         public static string Credits {
             get {
@@ -115,7 +115,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Delete.
+        ///   Ищет локализованную строку, похожую на 削除.
         /// </summary>
         public static string Delete {
             get {
@@ -124,7 +124,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Details.
+        ///   Ищет локализованную строку, похожую на 詳細.
         /// </summary>
         public static string Details {
             get {
@@ -133,7 +133,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Edit.
+        ///   Ищет локализованную строку, похожую на 編集.
         /// </summary>
         public static string Edit {
             get {
@@ -142,7 +142,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на This is my project on the AspNet Core platform.
+        ///   Ищет локализованную строку, похожую на これは私のAspNet Coreプラットフォーム上のプロジェクトです.
         /// </summary>
         public static string HomeScreen {
             get {
@@ -151,7 +151,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Index of students.
+        ///   Ищет локализованную строку, похожую на 学生のインデックス.
         /// </summary>
         public static string IndexOfStudents {
             get {
@@ -160,7 +160,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Index.
+        ///   Ищет локализованную строку, похожую на 科目のインデックス.
         /// </summary>
         public static string IndexOfSubject {
             get {
@@ -169,7 +169,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Major.
+        ///   Ищет локализованную строку, похожую на 専攻.
         /// </summary>
         public static string Major {
             get {
@@ -178,7 +178,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Modification.
+        ///   Ищет локализованную строку, похожую на 修正.
         /// </summary>
         public static string Modification {
             get {
@@ -187,7 +187,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Name.
+        ///   Ищет локализованную строку, похожую на アイテム名.
         /// </summary>
         public static string Name {
             get {
@@ -196,7 +196,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Operations.
+        ///   Ищет локализованную строку, похожую на 操作.
         /// </summary>
         public static string Operations {
             get {
@@ -205,7 +205,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Privacy Policy.
+        ///   Ищет локализованную строку, похожую на プライバシーポリシー.
         /// </summary>
         public static string Privacy {
             get {
@@ -214,7 +214,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на This website does not collect personal information. The information entered here will not be passed on to third parties..
+        ///   Ищет локализованную строку, похожую на このウェブサイトは個人情報を収集しません。ここに入力された情報は第三者に提供されません。.
         /// </summary>
         public static string PrivacyDesc {
             get {
@@ -223,7 +223,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Removal.
+        ///   Ищет локализованную строку, похожую на 削除.
         /// </summary>
         public static string Removal {
             get {
@@ -232,7 +232,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Are you sure you want to delete this?.
+        ///   Ищет локализованную строку, похожую на 本当に削除しますか？.
         /// </summary>
         public static string RemovalConfirm {
             get {
@@ -241,7 +241,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Save.
+        ///   Ищет локализованную строку, похожую на 保存.
         /// </summary>
         public static string Save {
             get {
@@ -250,7 +250,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Student.
+        ///   Ищет локализованную строку, похожую на 学生.
         /// </summary>
         public static string Student {
             get {
@@ -259,7 +259,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Name and surname.
+        ///   Ищет локализованную строку, похожую на 名前と姓.
         /// </summary>
         public static string StudentName {
             get {
@@ -268,7 +268,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Subject.
+        ///   Ищет локализованную строку, похожую на 科目.
         /// </summary>
         public static string Subject {
             get {
@@ -277,7 +277,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Subjects.
+        ///   Ищет локализованную строку, похожую на 科目.
         /// </summary>
         public static string Subjects {
             get {
@@ -286,7 +286,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Welcome.
+        ///   Ищет локализованную строку, похожую на ようこそ.
         /// </summary>
         public static string Welcome {
             get {

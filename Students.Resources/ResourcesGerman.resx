@@ -118,81 +118,81 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Age" xml:space="preserve">
-    <value>Age</value>
+    <value>Alter</value>
   </data>
   <data name="AvailableSubjects" xml:space="preserve">
-    <value>Available subjects</value>
+    <value>Verfügbare Fächer</value>
   </data>
   <data name="BackToList" xml:space="preserve">
-    <value>Back to List</value>
+    <value>Zurück zur Liste</value>
   </data>
   <data name="ChosenSubjects" xml:space="preserve">
-    <value>Chosen subjects</value>
+    <value>Gewählte Fächer</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Create</value>
+    <value>Erstellen</value>
   </data>
   <data name="Credits" xml:space="preserve">
     <value>Credits</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Löschen</value>
   </data>
   <data name="Details" xml:space="preserve">
     <value>Details</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>Bearbeiten</value>
   </data>
   <data name="HomeScreen" xml:space="preserve">
-    <value>This is my project on the AspNet Core platform</value>
+    <value>Dies ist mein Projekt auf der AspNet Core Plattform</value>
   </data>
   <data name="IndexOfStudents" xml:space="preserve">
-    <value>Index of students</value>
+    <value>Liste der Studenten</value>
   </data>
   <data name="IndexOfSubject" xml:space="preserve">
-    <value>Index</value>
+    <value>Liste der Posten</value>
   </data>
   <data name="Major" xml:space="preserve">
-    <value>Major</value>
+    <value>Hauptfach</value>
   </data>
   <data name="Modification" xml:space="preserve">
-    <value>Modification</value>
+    <value>Modifikation</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name</value>
+    <value>Name des Subjekts</value>
   </data>
   <data name="Operations" xml:space="preserve">
-    <value>Operations</value>
+    <value>Operationen</value>
   </data>
   <data name="Privacy" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Datenschutzerklärung</value>
   </data>
   <data name="PrivacyDesc" xml:space="preserve">
-    <value>This website does not collect personal information. The information entered here will not be passed on to third parties.</value>
+    <value>Diese Website sammelt keine persönlichen Informationen. Die hier eingegebenen Informationen werden nicht an Dritte weitergegeben.</value>
   </data>
   <data name="Removal" xml:space="preserve">
-    <value>Removal</value>
+    <value>Entfernung</value>
   </data>
   <data name="RemovalConfirm" xml:space="preserve">
-    <value>Are you sure you want to delete this?</value>
+    <value>Sind Sie sicher, dass Sie dies löschen möchten?</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Speichern</value>
   </data>
   <data name="Student" xml:space="preserve">
     <value>Student</value>
   </data>
   <data name="StudentName" xml:space="preserve">
-    <value>Name and surname</value>
+    <value>Vorname Nachname</value>
   </data>
   <data name="Subject" xml:space="preserve">
-    <value>Subject</value>
+    <value>Fach</value>
   </data>
   <data name="Subjects" xml:space="preserve">
-    <value>Subjects</value>
+    <value>Fächer</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Welcome</value>
+    <value>Willkommen</value>
   </data>
 </root>

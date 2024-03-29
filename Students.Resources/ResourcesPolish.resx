@@ -120,8 +120,14 @@
   <data name="Age" xml:space="preserve">
     <value>Wiek</value>
   </data>
+  <data name="AvailableSubjects" xml:space="preserve">
+    <value>Dostępne przedmioty</value>
+  </data>
   <data name="BackToList" xml:space="preserve">
     <value>Powrót do listy</value>
+  </data>
+  <data name="ChosenSubjects" xml:space="preserve">
+    <value>Wybrane przedmioty</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Utwórz</value>
@@ -141,6 +147,9 @@
   <data name="HomeScreen" xml:space="preserve">
     <value>To jest mój projekt na platformie AspNet Core</value>
   </data>
+  <data name="IndexOfStudents" xml:space="preserve">
+    <value>Indeks studentów</value>
+  </data>
   <data name="IndexOfSubject" xml:space="preserve">
     <value>Indeks przedmiotu</value>
   </data>
@@ -153,6 +162,9 @@
   <data name="Name" xml:space="preserve">
     <value>Nazwa przedmiotu</value>
   </data>
+  <data name="Operations" xml:space="preserve">
+    <value>Operacje</value>
+  </data>
   <data name="Privacy" xml:space="preserve">
     <value>Polityka prywatności</value>
   </data>
@@ -164,16 +176,22 @@ Wprowadzone tutaj informacje nie będą przekazywane osobom trzecim.</value>
     <value>Usunięcie</value>
   </data>
   <data name="RemovalConfirm" xml:space="preserve">
-    <value>Czy na pewno chcesz usunąć ten przedmiot?</value>
+    <value>Czy na pewno chcesz usunąć to?</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Zapisz</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
   </data>
   <data name="StudentName" xml:space="preserve">
     <value>Imię i nazwisko</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Przedmiot</value>
+  </data>
+  <data name="Subjects" xml:space="preserve">
+    <value>Przedmioty</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Witaj</value>

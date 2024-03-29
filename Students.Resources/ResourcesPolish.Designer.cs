@@ -70,11 +70,29 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Dostępne przedmioty.
+        /// </summary>
+        public static string AvailableSubjects {
+            get {
+                return ResourceManager.GetString("AvailableSubjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Powrót do listy.
         /// </summary>
         public static string BackToList {
             get {
                 return ResourceManager.GetString("BackToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Wybrane przedmioty.
+        /// </summary>
+        public static string ChosenSubjects {
+            get {
+                return ResourceManager.GetString("ChosenSubjects", resourceCulture);
             }
         }
         
@@ -133,6 +151,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Indeks studentów.
+        /// </summary>
+        public static string IndexOfStudents {
+            get {
+                return ResourceManager.GetString("IndexOfStudents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Indeks przedmiotu.
         /// </summary>
         public static string IndexOfSubject {
@@ -169,6 +196,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Operacje.
+        /// </summary>
+        public static string Operations {
+            get {
+                return ResourceManager.GetString("Operations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Polityka prywatności.
         /// </summary>
         public static string Privacy {
@@ -197,7 +233,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Czy na pewno chcesz usunąć ten przedmiot?.
+        ///   Ищет локализованную строку, похожую на Czy na pewno chcesz usunąć to?.
         /// </summary>
         public static string RemovalConfirm {
             get {
@@ -211,6 +247,15 @@ namespace Students.Resources {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Student.
+        /// </summary>
+        public static string Student {
+            get {
+                return ResourceManager.GetString("Student", resourceCulture);
             }
         }
         
@@ -229,6 +274,15 @@ namespace Students.Resources {
         public static string Subject {
             get {
                 return ResourceManager.GetString("Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Przedmioty.
+        /// </summary>
+        public static string Subjects {
+            get {
+                return ResourceManager.GetString("Subjects", resourceCulture);
             }
         }
         
