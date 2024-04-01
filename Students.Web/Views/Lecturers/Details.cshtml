@@ -1,0 +1,42 @@
+﻿@using Students.Interfaces
+@using System.Globalization
+
+@model Students.Common.Models.Lecturer
+
+@inject ISharedResourcesService sharedResourcesService
+
+@{
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
+    ViewData["Title"] = "Details";
+}
+
+<h1> @sharedResourcesService.GetString("Details", cultureInfo)</h1>
+
+<div>
+    <h4>Lecturer</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @sharedResourcesService.GetString("StudentName", cultureInfo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResourcesService.GetString("AcademicDegree", cultureInfo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AcademicDegree)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResourcesService.GetString("Promoter", cultureInfo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsPromoter)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id"> @sharedResourcesService.GetString("Edit", cultureInfo)</a> |
+    <a asp-action="Index"> @sharedResourcesService.GetString("BackToList") </a>
+</div>

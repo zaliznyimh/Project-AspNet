@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Students.Common.Models;
 
 namespace Students.Common.Data;
@@ -13,7 +14,7 @@ public class StudentsContext : DbContext
     public DbSet<Student> Student { get; set; } = default!;
     public DbSet<Subject> Subject { get; set; } = default!;
     public DbSet<StudentSubject> StudentSubject { get; set; } = default!;
-
+    public DbSet<Lecturer> Lecturers { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

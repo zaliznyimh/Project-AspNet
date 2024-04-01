@@ -1,4 +1,5 @@
-﻿using Students.Common.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Students.Common.Models;
 using System.ComponentModel;
 
 namespace Students.Interfaces;
@@ -12,7 +13,6 @@ public interface IDatabaseService
     
     public Task<List<Student>> GetStudentsListAsync();
 
-    public Task<List<Subject>> GetSubjectsList();
 
     public Task<bool> CreateStudentAsync(int id, string name, int age, string major, int[] subjectIdDst);
 
@@ -23,6 +23,8 @@ public interface IDatabaseService
     #endregion // IDatabaseService properties for StudentsController
 
     #region IDatabaseService properties for SubjectsController 
+    public Task<List<Subject>> GetSubjectsList();
+    
     public Task<bool> CreateSubjectAsync(Subject subject);
 
     public Task<Subject?> GetSubjectToEditAsync(int? id);
@@ -35,4 +37,15 @@ public interface IDatabaseService
     
     public bool CheckSubjectExists(int id);
     #endregion // IDatabaseService properties for SubjectsController 
+
+    #region IDatabaseService properties for LecturerController 
+
+    public Task<List<Lecturer>> GetLecturersList();
+
+    public Task<Lecturer?> GetLecturer(int? id);
+    public Task<bool> CreateLecturerAsync(Lecturer lecturer);
+    public Task<Lecturer?> EditLecturer(Lecturer lecturer);
+
+    public Task<bool> DeleteLecturer(int? id);
+    #endregion
 }

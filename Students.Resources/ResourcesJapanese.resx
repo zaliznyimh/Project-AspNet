@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AcademicDegree" xml:space="preserve">
+    <value>学位</value>
+  </data>
+  <data name="AcademicDegreeChoose" xml:space="preserve">
+    <value>学位選択</value>
+  </data>
   <data name="Age" xml:space="preserve">
     <value>年齢</value>
   </data>
@@ -153,11 +159,23 @@
   <data name="HomeScreen" xml:space="preserve">
     <value>これは私のAspNet Coreプラットフォーム上のプロジェクトです</value>
   </data>
+  <data name="IndexOfLectures" xml:space="preserve">
+    <value>講師一覧</value>
+  </data>
   <data name="IndexOfStudents" xml:space="preserve">
     <value>学生のインデックス</value>
   </data>
   <data name="IndexOfSubject" xml:space="preserve">
     <value>科目のインデックス</value>
+  </data>
+  <data name="LectureName" xml:space="preserve">
+    <value>講師名</value>
+  </data>
+  <data name="Lecturer" xml:space="preserve">
+    <value>講師</value>
+  </data>
+  <data name="Lecturers" xml:space="preserve">
+    <value>講師陣</value>
   </data>
   <data name="Major" xml:space="preserve">
     <value>専攻</value>
@@ -176,6 +194,9 @@
   </data>
   <data name="PrivacyDesc" xml:space="preserve">
     <value>このウェブサイトは個人情報を収集しません。ここに入力された情報は第三者に提供されません。</value>
+  </data>
+  <data name="Promoter" xml:space="preserve">
+    <value>プロモーター</value>
   </data>
   <data name="Removal" xml:space="preserve">
     <value>削除</value>

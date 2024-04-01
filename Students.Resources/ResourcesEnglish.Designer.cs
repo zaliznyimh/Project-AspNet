@@ -61,6 +61,24 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Academic degree.
+        /// </summary>
+        public static string AcademicDegree {
+            get {
+                return ResourceManager.GetString("AcademicDegree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Choose academic degree.
+        /// </summary>
+        public static string AcademicDegreeChoose {
+            get {
+                return ResourceManager.GetString("AcademicDegreeChoose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Age.
         /// </summary>
         public static string Age {
@@ -169,6 +187,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Index of lectures.
+        /// </summary>
+        public static string IndexOfLectures {
+            get {
+                return ResourceManager.GetString("IndexOfLectures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Index of students.
         /// </summary>
         public static string IndexOfStudents {
@@ -183,6 +210,33 @@ namespace Students.Resources {
         public static string IndexOfSubject {
             get {
                 return ResourceManager.GetString("IndexOfSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Lecture&apos;s name.
+        /// </summary>
+        public static string LectureName {
+            get {
+                return ResourceManager.GetString("LectureName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Lecturer.
+        /// </summary>
+        public static string Lecturer {
+            get {
+                return ResourceManager.GetString("Lecturer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Lecturers.
+        /// </summary>
+        public static string Lecturers {
+            get {
+                return ResourceManager.GetString("Lecturers", resourceCulture);
             }
         }
         
@@ -237,6 +291,15 @@ namespace Students.Resources {
         public static string PrivacyDesc {
             get {
                 return ResourceManager.GetString("PrivacyDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Can promote student?.
+        /// </summary>
+        public static string Promoter {
+            get {
+                return ResourceManager.GetString("Promoter", resourceCulture);
             }
         }
         

@@ -76,7 +76,7 @@ public class DatabaseService : IDatabaseService
             student = _context.Student.FirstOrDefault(m => m.Id == id);
             if (student is not null)
             {
-                var studentSubjects = _context.StudentSubject
+                 var studentSubjects = _context.StudentSubject
                     .Where(ss => ss.StudentId == id)
                     .Include(ss => ss.Subject)
                     .ToList();
@@ -203,6 +203,8 @@ public class DatabaseService : IDatabaseService
         return result;
     }
 
+    ///////
+    ///////
     public async Task<bool> CreateSubjectAsync(Subject subject)
     {
         var result = false; 
@@ -210,7 +212,7 @@ public class DatabaseService : IDatabaseService
         var saveResult = await _context.SaveChangesAsync();
         result = saveResult > 0;
         return result;
-    }
+    } 
 
     public async Task<Subject?> GetSubjectToEditAsync(int? id)
     {
@@ -251,6 +253,61 @@ public class DatabaseService : IDatabaseService
     {
         var result = _context.Subject.Any(e => e.Id == id);
         return result;
+    }
+
+
+    public async Task<List<Lecturer>> GetLecturersList()
+    {
+        var listOfLecturers = new List<Lecturer>();
+        try
+        {
+            listOfLecturers = await _context.Lecturers.ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught in GetListOfSubjects: " + ex);
+        }
+        return listOfLecturers;
+
+    }
+
+    public async Task<Lecturer?> GetLecturer(int? id)
+    {
+        var lecturer = await _context.Lecturers.
+                            FirstOrDefaultAsync(m => m.Id == id);
+        return lecturer;
+    }
+
+    public async Task<bool> CreateLecturerAsync(Lecturer lecturer)
+    {
+        var result = false;
+        await _context.AddAsync(lecturer);
+        var saveResult = await _context.SaveChangesAsync();
+        result = saveResult > 0;
+        return result;
+    }
+
+    public async Task<Lecturer?> EditLecturer(Lecturer lecturer)
+    {
+        _context.Update(lecturer);
+        var saveResult = await _context.SaveChangesAsync();
+        var result = saveResult > 0;
+        return lecturer;
+    }
+
+    public async Task<bool> DeleteLecturer(int? id)
+    {
+        var result = false;
+        var lecturer = await _context.Lecturers.FindAsync(id);
+        if (lecturer != null)
+        {
+            _context.Lecturers.Remove(lecturer);
+        }
+
+        var saveResult = await _context.SaveChangesAsync();
+        result = saveResult > 0;
+        return result;
+
     }
     #endregion // Public Methods
 }

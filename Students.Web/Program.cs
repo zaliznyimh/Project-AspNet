@@ -23,8 +23,7 @@ try
 {
     logger.Debug("init main");
     builder.Services.AddDbContext<StudentsContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("StudentsContext") ?? throw new InvalidOperationException("Connection string 'StudentsContext' not found.")));
-
+    options.UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = DatabaseName; Trusted_Connection = True; MultipleActiveResultSets = true"));
     // Add services to the container.
     builder.Services.AddControllersWithViews();
 

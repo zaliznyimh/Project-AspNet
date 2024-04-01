@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AcademicDegree" xml:space="preserve">
+    <value>Stopień naukowy</value>
+  </data>
+  <data name="AcademicDegreeChoose" xml:space="preserve">
+    <value>Wybierz stopień naukowy</value>
+  </data>
   <data name="Age" xml:space="preserve">
     <value>Wiek</value>
   </data>
@@ -153,11 +159,23 @@
   <data name="HomeScreen" xml:space="preserve">
     <value>To jest mój projekt na platformie AspNet Core</value>
   </data>
+  <data name="IndexOfLectures" xml:space="preserve">
+    <value>Indeks wykładowców</value>
+  </data>
   <data name="IndexOfStudents" xml:space="preserve">
     <value>Indeks studentów</value>
   </data>
   <data name="IndexOfSubject" xml:space="preserve">
     <value>Indeks przedmiotu</value>
+  </data>
+  <data name="LectureName" xml:space="preserve">
+    <value>Imię i nazwisko wykładowcy</value>
+  </data>
+  <data name="Lecturer" xml:space="preserve">
+    <value>Wykładowca</value>
+  </data>
+  <data name="Lecturers" xml:space="preserve">
+    <value>Wykładowcy</value>
   </data>
   <data name="Major" xml:space="preserve">
     <value>Kierunek</value>
@@ -177,6 +195,9 @@
   <data name="PrivacyDesc" xml:space="preserve">
     <value>Ta strona nie zbiera informacji osobistych.
 Wprowadzone tutaj informacje nie będą przekazywane osobom trzecim.</value>
+  </data>
+  <data name="Promoter" xml:space="preserve">
+    <value>Promotor</value>
   </data>
   <data name="Removal" xml:space="preserve">
     <value>Usunięcie</value>
