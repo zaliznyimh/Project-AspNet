@@ -11,25 +11,25 @@ using Students.Interfaces;
 
 namespace Students.Web.Controllers
 {
-    public class LecturersController : Controller
+    public class BooksController : Controller
     {
         private readonly StudentsContext _context;
         private readonly IDatabaseService _databaseService;
 
-        public LecturersController(StudentsContext context, IDatabaseService databaseService)
+        public BooksController(StudentsContext context, IDatabaseService databaseService)
         {
             _context = context;
             _databaseService = databaseService;
         }
 
-        // GET: Lecturers
+        // GET: Books
         public async Task<IActionResult> Index()
         {
-            var lectureList = await _databaseService.GetLecturersList();
-            return View(lectureList);
+            var result = await _databaseService.GetBooksList();
+            return View(result);
         }
 
-        // GET: Lecturers/Details/5
+        // GET: Books/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,38 +37,38 @@ namespace Students.Web.Controllers
                 return NotFound();
             }
 
-            var lecturer = await _databaseService.GetLecturerInfo(id);
-
-            if (lecturer == null)
+            var book = await _databaseService.GetInfoBook(id);
+                        
+            if (book == null)
             {
                 return NotFound();
             }
 
-            return View(lecturer);
+            return View(book);
         }
 
-        // GET: Lecturers/Create
+        // GET: Books/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Lecturers/Create
+        // POST: Books/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,AcademicDegree,IsPromoter")] Lecturer lecturer)
+        public async Task<IActionResult> Create([Bind("Id,BookTitle,ISBN,PublicationDate")] Book book)
         {
             if (ModelState.IsValid)
             {
-                await _databaseService.CreateLecturerAsync(lecturer);
+                await _databaseService.CreateBookAsync(book);
                 return RedirectToAction(nameof(Index));
             }
-            return View(lecturer);
+            return View(book);
         }
 
-        // GET: Lecturers/Edit/5
+        // GET: Books/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,23 +76,22 @@ namespace Students.Web.Controllers
                 return NotFound();
             }
 
-            var lecturer = await _databaseService.GetLecturerInfo(id);
-           
-            if (lecturer == null)
+            var book = await _context.Book.FindAsync(id);
+            if (book == null)
             {
                 return NotFound();
             }
-            return View(lecturer);
+            return View(book);
         }
 
-        // POST: Lecturers/Edit/5
+        // POST: Books/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,AcademicDegree,IsPromoter")] Lecturer lecturer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,BookTitle,ISBN,PublicationDate")] Book book)
         {
-            if (id != lecturer.Id)
+            if (id != book.Id)
             {
                 return NotFound();
             }
@@ -101,11 +100,11 @@ namespace Students.Web.Controllers
             {
                 try
                 {
-                    await _databaseService.EditLecturer(lecturer);
+                    await _databaseService.EditBook(book);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LecturerExists(lecturer.Id))
+                    if (!BookExists(book.Id))
                     {
                         return NotFound();
                     }
@@ -116,10 +115,10 @@ namespace Students.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(lecturer);
+            return View(book);
         }
 
-        // GET: Lecturers/Delete/5
+        // GET: Books/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -127,27 +126,27 @@ namespace Students.Web.Controllers
                 return NotFound();
             }
 
-            var lecturer = await _databaseService.GetLecturerInfo(id);
-            if (lecturer == null)
+            var book = await _databaseService.GetInfoBook(id);
+            if (book == null)
             {
                 return NotFound();
             }
 
-            return View(lecturer);
+            return View(book);
         }
 
-        // POST: Lecturers/Delete/5
+        // POST: Books/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var lecturer = await _databaseService.DeleteLecturer(id);
+            var book = await _databaseService.DeleteBook(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool LecturerExists(int id)
+        private bool BookExists(int id)
         {
-            return _context.Lecturers.Any(e => e.Id == id);
+            return _context.Book.Any(e => e.Id == id);
         }
     }
 }

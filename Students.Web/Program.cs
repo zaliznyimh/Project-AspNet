@@ -23,7 +23,7 @@ try
 {
     logger.Debug("init main");
     builder.Services.AddDbContext<StudentsContext>(options =>
-    options.UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = DatabaseName; Trusted_Connection = True; MultipleActiveResultSets = true"));
+    options.UseSqlServer("Server = (localdb)\\mssqllocaldb; Database=StudentsDatabase; Trusted_Connection = True; MultipleActiveResultSets = true"));
     // Add services to the container.
     builder.Services.AddControllersWithViews();
 

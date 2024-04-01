@@ -42,10 +42,20 @@ public interface IDatabaseService
 
     public Task<List<Lecturer>> GetLecturersList();
 
-    public Task<Lecturer?> GetLecturer(int? id);
+    public Task<Lecturer?> GetLecturerInfo(int? id);
     public Task<bool> CreateLecturerAsync(Lecturer lecturer);
     public Task<Lecturer?> EditLecturer(Lecturer lecturer);
 
     public Task<bool> DeleteLecturer(int? id);
-    #endregion
+
+    #endregion // IDatabaseService properties for LecturerController 
+
+    #region IDatabaseService properties for BooksController 
+
+    public Task<List<Book>> GetBooksList();
+    public Task<Book?> GetInfoBook(int? id);
+    public Task<bool> CreateBookAsync(Book book);
+    public Task<Book?> EditBook(Book book);
+    public Task<bool> DeleteBook(int? id);
+    #endregion // IDatabaseService properties for BooksController 
 }

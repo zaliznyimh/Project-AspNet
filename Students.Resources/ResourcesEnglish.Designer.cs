@@ -106,6 +106,24 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Book.
+        /// </summary>
+        public static string Book {
+            get {
+                return ResourceManager.GetString("Book", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Book&apos;s Title.
+        /// </summary>
+        public static string BookTitle {
+            get {
+                return ResourceManager.GetString("BookTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Chosen subjects.
         /// </summary>
         public static string ChosenSubjects {
@@ -187,6 +205,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Index of fields of study.
+        /// </summary>
+        public static string IndexOfField {
+            get {
+                return ResourceManager.GetString("IndexOfField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Index of lectures.
         /// </summary>
         public static string IndexOfLectures {
@@ -210,6 +237,15 @@ namespace Students.Resources {
         public static string IndexOfSubject {
             get {
                 return ResourceManager.GetString("IndexOfSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ISBN.
+        /// </summary>
+        public static string ISBN {
+            get {
+                return ResourceManager.GetString("ISBN", resourceCulture);
             }
         }
         
@@ -300,6 +336,15 @@ namespace Students.Resources {
         public static string Promoter {
             get {
                 return ResourceManager.GetString("Promoter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Publication Date.
+        /// </summary>
+        public static string PublicationDate {
+            get {
+                return ResourceManager.GetString("PublicationDate", resourceCulture);
             }
         }
         

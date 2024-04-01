@@ -25,6 +25,7 @@ public class DatabaseService : IDatabaseService
 
     #region Public Methods
 
+    #region StudentsController Methods
     public bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst)
     {
         var result = false;
@@ -202,9 +203,9 @@ public class DatabaseService : IDatabaseService
         }
         return result;
     }
+    #endregion // StudentsController Methods
 
-    ///////
-    ///////
+    #region SubjectsController Methods
     public async Task<bool> CreateSubjectAsync(Subject subject)
     {
         var result = false; 
@@ -254,7 +255,9 @@ public class DatabaseService : IDatabaseService
         var result = _context.Subject.Any(e => e.Id == id);
         return result;
     }
+    #endregion // LecturersController Methods
 
+    #region LecturersController Methods
 
     public async Task<List<Lecturer>> GetLecturersList()
     {
@@ -271,10 +274,9 @@ public class DatabaseService : IDatabaseService
 
     }
 
-    public async Task<Lecturer?> GetLecturer(int? id)
+    public async Task<Lecturer?> GetLecturerInfo(int? id)
     {
-        var lecturer = await _context.Lecturers.
-                            FirstOrDefaultAsync(m => m.Id == id);
+        var lecturer = await _context.Lecturers.FirstOrDefaultAsync(m => m.Id == id);
         return lecturer;
     }
 
@@ -294,7 +296,6 @@ public class DatabaseService : IDatabaseService
         var result = saveResult > 0;
         return lecturer;
     }
-
     public async Task<bool> DeleteLecturer(int? id)
     {
         var result = false;
@@ -309,5 +310,65 @@ public class DatabaseService : IDatabaseService
         return result;
 
     }
+    #endregion // LecturersController Methods
+
+    #region BooksController Methods
+    public async Task<List<Book>> GetBooksList()
+    {
+        var listOfBooks = new List<Book>();
+        try
+        {
+            listOfBooks = await _context.Book.ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught in GetListOfSubjects: " + ex);
+        }
+        return listOfBooks;
+
+    }
+    public async Task<Book?> GetInfoBook(int? id)
+    {
+        var bookInfo = await _context.Book.FirstOrDefaultAsync(m => m.Id == id);
+        return bookInfo;
+    }
+    public async Task<bool> CreateBookAsync(Book book)
+    {
+        var result = false;
+        await _context.AddAsync(book);
+        var saveResult = await _context.SaveChangesAsync();
+        result = saveResult > 0;
+        return result;
+    }
+
+    public async Task<Book?> EditBook(Book book)
+    {
+        _context.Update(book);
+        var saveResult = await _context.SaveChangesAsync();
+        var result = saveResult > 0;
+        return book;
+    }
+    public async Task<bool> DeleteBook(int? id)
+    {
+        var result = false;
+        var bookToDelete = await _context.Book.FindAsync(id);
+        if (bookToDelete != null)
+        {
+            _context.Book.Remove(bookToDelete);
+        }
+
+        var saveResult = await _context.SaveChangesAsync();
+        result = saveResult > 0;
+        return result;
+    }
+
+    #endregion // LecturersController Methods
+
+    #region FieldOfStudyController Methods
+
+
+
+    #endregion //FieldOfStudyController Methods
+    
     #endregion // Public Methods
 }

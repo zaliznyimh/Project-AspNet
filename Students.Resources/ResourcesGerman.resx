@@ -132,6 +132,12 @@
   <data name="BackToList" xml:space="preserve">
     <value>Zurück zur Liste</value>
   </data>
+  <data name="Book" xml:space="preserve">
+    <value>Buch</value>
+  </data>
+  <data name="BookTitle" xml:space="preserve">
+    <value>Titel des Buches</value>
+  </data>
   <data name="ChosenSubjects" xml:space="preserve">
     <value>Gewählte Fächer</value>
   </data>
@@ -159,6 +165,9 @@
   <data name="HomeScreen" xml:space="preserve">
     <value>Dies ist mein Projekt auf der AspNet Core Plattform</value>
   </data>
+  <data name="IndexOfField" xml:space="preserve">
+    <value>Verzeichnis der Studienfächer</value>
+  </data>
   <data name="IndexOfLectures" xml:space="preserve">
     <value>Verzeichnis der Dozenten</value>
   </data>
@@ -167,6 +176,9 @@
   </data>
   <data name="IndexOfSubject" xml:space="preserve">
     <value>Liste der Posten</value>
+  </data>
+  <data name="ISBN" xml:space="preserve">
+    <value>ISBN</value>
   </data>
   <data name="LectureName" xml:space="preserve">
     <value>Name des Dozenten</value>
@@ -197,6 +209,9 @@
   </data>
   <data name="Promoter" xml:space="preserve">
     <value>Projektträger</value>
+  </data>
+  <data name="PublicationDate" xml:space="preserve">
+    <value>Datum der Veröffentlichung</value>
   </data>
   <data name="Removal" xml:space="preserve">
     <value>Entfernung</value>

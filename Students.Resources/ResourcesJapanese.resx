@@ -132,6 +132,12 @@
   <data name="BackToList" xml:space="preserve">
     <value>リストに戻る</value>
   </data>
+  <data name="Book" xml:space="preserve">
+    <value>書籍名</value>
+  </data>
+  <data name="BookTitle" xml:space="preserve">
+    <value>書名</value>
+  </data>
   <data name="ChosenSubjects" xml:space="preserve">
     <value>選択された科目作成</value>
   </data>
@@ -159,6 +165,9 @@
   <data name="HomeScreen" xml:space="preserve">
     <value>これは私のAspNet Coreプラットフォーム上のプロジェクトです</value>
   </data>
+  <data name="IndexOfField" xml:space="preserve">
+    <value>分野別索引</value>
+  </data>
   <data name="IndexOfLectures" xml:space="preserve">
     <value>講師一覧</value>
   </data>
@@ -167,6 +176,9 @@
   </data>
   <data name="IndexOfSubject" xml:space="preserve">
     <value>科目のインデックス</value>
+  </data>
+  <data name="ISBN" xml:space="preserve">
+    <value>ISBN</value>
   </data>
   <data name="LectureName" xml:space="preserve">
     <value>講師名</value>
@@ -197,6 +209,9 @@
   </data>
   <data name="Promoter" xml:space="preserve">
     <value>プロモーター</value>
+  </data>
+  <data name="PublicationDate" xml:space="preserve">
+    <value>出版年月日</value>
   </data>
   <data name="Removal" xml:space="preserve">
     <value>削除</value>
