@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Students.Common.Attributes;
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
 using Students.Services;
+using System.ComponentModel.DataAnnotations;
 
 namespace Students.Web.Controllers;
 
@@ -92,25 +94,15 @@ public class StudentsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(int id, string name, int age, string major, int[] subjectIdDst)
+    [NameSurname]
+    public async Task<IActionResult> Create([Bind("Id, Name, Age, Major, PostalCode")] Student student, int[] subjectIdDst)
     {
-        IActionResult result;
-
-        try
+        if (ModelState.IsValid)
         {
-            var newStudent = await _databaseService.CreateStudentAsync(id, name, age, major, subjectIdDst);
-            if (!newStudent)
-            {
-                throw new Exception("Error saving changes to the database.");
-            }
-            result = RedirectToAction(nameof(Index));
+            student = await _databaseService.CreateStudentAsync(student, subjectIdDst);
+            return RedirectToAction(nameof(Index));
         }
-        catch (Exception ex)
-        {
-            _logger.LogError("Exception caught: " + ex.Message);
-            result = View();
-        }
-        return result;
+        return View(student);
     }
 
     // GET: Students/Edit/5
@@ -195,7 +187,6 @@ public class StudentsController : Controller
 
         return result;
     }
-
     // POST: Students/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]

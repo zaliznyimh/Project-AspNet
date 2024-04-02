@@ -313,6 +313,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Kod pocztowy.
+        /// </summary>
+        public static string PostalCode {
+            get {
+                return ResourceManager.GetString("PostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Polityka prywatności.
         /// </summary>
         public static string Privacy {

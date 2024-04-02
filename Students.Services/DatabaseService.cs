@@ -120,9 +120,8 @@ public class DatabaseService : IDatabaseService
         return listOfSubjects;
     }
 
-    public async Task<bool> CreateStudentAsync(int id, string name, int age, string major, int[] subjectIdDst)
+    public async Task<Student> CreateStudentAsync(Student student, int[] subjectIdDst)
     {
-        var result = false;
         try
         {
             var chosenSubjects = _context.Subject
@@ -131,29 +130,27 @@ public class DatabaseService : IDatabaseService
             var availableSubjects = _context.Subject
                 .Where(s => !subjectIdDst.Contains(s.Id))
                 .ToList();
-            var student = new Student()
-            {
-                Id = id,
-                Name = name,
-                Age = age,
-                Major = major,
-                AvailableSubjects = availableSubjects
-            };
+
+            student.AvailableSubjects = availableSubjects;
+
             foreach (var chosenSubject in chosenSubjects)
             {
                 student.AddSubject(chosenSubject);
             }
-            await _context.Student.AddAsync(student);
-            var saveResult = await _context.SaveChangesAsync();
-            result = saveResult > 0;
+
+            _context.Add(student);
+            var addResult = await _context.SaveChangesAsync();
+            {
+                throw new Exception("An error occurred during saving data");
+            }
         }
         catch (Exception ex)
         {
             _logger.LogError("Exception caught: " + ex.Message);
         }
-
-        return result;
+        return student;
     }
+
 
     public async Task<Student?> GetStudentWithAvailableSubjects(int? id)
     {

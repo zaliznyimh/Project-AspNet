@@ -7,15 +7,14 @@ namespace Students.Interfaces;
 public interface IDatabaseService
 {
     #region IDatabaseService properties for StudentsController
+    
     public bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst);
 
     Student? DisplayStudentDetails(int? id);
     
     public Task<List<Student>> GetStudentsListAsync();
 
-
-    public Task<bool> CreateStudentAsync(int id, string name, int age, string major, int[] subjectIdDst);
-
+    public Task<Student> CreateStudentAsync(Student student, int[] subjectIdDst);
     public Task<Student?> GetStudentWithAvailableSubjects(int? id);
 
     public Task<bool?> DeleteStudentAsync(int? id);
@@ -58,4 +57,6 @@ public interface IDatabaseService
     public Task<Book?> EditBook(Book book);
     public Task<bool> DeleteBook(int? id);
     #endregion // IDatabaseService properties for BooksController 
+
+    
 }

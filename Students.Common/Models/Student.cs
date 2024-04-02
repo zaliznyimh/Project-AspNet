@@ -1,3 +1,4 @@
+using Students.Common.Attributes;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,7 +9,7 @@ public class Student
     public int Id { get; set; }
 
     [Required]
-    [StringLength(100)]
+    [NameSurname]
     public string Name { get; set; } = string.Empty;
 
     [Range(1, 100)]
@@ -17,6 +18,9 @@ public class Student
     [Required]
     [StringLength(100)]
     public string Major { get; set; } = string.Empty;
+
+    [ValidPostalCode]
+    public string PostalCode { get; set; } = string.Empty;
 
     public ICollection<StudentSubject> StudentSubjects { get; set; } = new List<StudentSubject>();
 
@@ -27,11 +31,12 @@ public class Student
     {
     }
 
-    public Student(string name, int age, string major)
+    public Student(string name, int age, string major, string postalCode)
     {
         Name = name;
         Age = age;
         Major = major;
+        PostalCode = postalCode;
     }
 
     public void AddSubject(Subject subject)
