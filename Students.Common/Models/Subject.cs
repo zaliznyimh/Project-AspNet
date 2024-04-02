@@ -18,6 +18,9 @@ public class Subject
 
     public ICollection<StudentSubject> StudentSubjects { get; set; } = new List<StudentSubject>();
 
+    public FieldOfStudy? FieldOfStudy { get; set; } 
+
+
     public Subject()
     {
     }

@@ -5,7 +5,7 @@ namespace Students.Common.Attributes
 {
     public class NameSurname : ValidationAttribute
     {
-        protected override ValidationResult? IsValid(object value, ValidationContext validationContext)
+        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
             var resultMessage = new ValidationResult("First and last name should begin with a capital letter and have only one space");
             if (value is string strValue)

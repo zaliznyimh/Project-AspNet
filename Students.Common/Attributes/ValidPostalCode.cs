@@ -10,9 +10,9 @@ namespace Students.Common.Attributes;
 
 public class ValidPostalCode : ValidationAttribute
 {
-    protected override ValidationResult? IsValid(object value, ValidationContext validationContext)
+    protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
     {
-        var resultMessage = new ValidationResult("Please enter a postal code such as xx-xxx");
+        var resultMessage = new ValidationResult("Please enter a value similar to this XX-XXX");
         if (value is string strValue)
         {
             if (Regex.IsMatch(strValue, @"\d{2}-\d{3}$"))

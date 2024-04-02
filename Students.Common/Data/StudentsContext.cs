@@ -16,7 +16,7 @@ public class StudentsContext : DbContext
     public DbSet<StudentSubject> StudentSubject { get; set; } = default!;
     public DbSet<Lecturer> Lecturers { get; set; } = default!;
     public DbSet<Book> Book { get; set; } = default!;
- 
+    public DbSet<FieldOfStudy> FieldOfStudies { get; set; } = default!;
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<StudentSubject>()

@@ -10,6 +10,7 @@ public interface IDatabaseService
     
     public bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst);
 
+    public Task<Student> EditStudentAsync(Student student, int[] subjectIdDst);
     Student? DisplayStudentDetails(int? id);
     
     public Task<List<Student>> GetStudentsListAsync();

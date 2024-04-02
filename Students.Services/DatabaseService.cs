@@ -68,6 +68,36 @@ public class DatabaseService : IDatabaseService
 
         return result;
     }
+    public async Task<Student> EditStudentAsync(Student student, int[] subjectIdDst)
+    {
+        try
+        {
+            var chosenSubjects = _context.Subject
+                .Where(s => subjectIdDst.Contains(s.Id))
+                .ToList();
+            var availableSubjects = _context.Subject
+                .Where(s => !subjectIdDst.Contains(s.Id))
+                .ToList();
+
+            student.AvailableSubjects = availableSubjects;
+
+            foreach (var chosenSubject in chosenSubjects)
+            {
+                student.AddSubject(chosenSubject);
+            }
+
+            _context.Add(student);
+            var addResult = await _context.SaveChangesAsync();
+            {
+                throw new Exception("An error occurred during saving data");
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught: " + ex.Message);
+        }
+        return student;
+    }
 
     public Student? DisplayStudentDetails(int? id)
     {
@@ -138,7 +168,7 @@ public class DatabaseService : IDatabaseService
                 student.AddSubject(chosenSubject);
             }
 
-            _context.Add(student);
+            _context.Update(student);
             var addResult = await _context.SaveChangesAsync();
             {
                 throw new Exception("An error occurred during saving data");
@@ -150,7 +180,6 @@ public class DatabaseService : IDatabaseService
         }
         return student;
     }
-
 
     public async Task<Student?> GetStudentWithAvailableSubjects(int? id)
     {
@@ -214,7 +243,7 @@ public class DatabaseService : IDatabaseService
 
     public async Task<Subject?> GetSubjectToEditAsync(int? id)
     {
-        var subject = await _context.Subject.FindAsync(id);
+        var subject = await _context.Subject.Include(x=>x.FieldOfStudy).SingleOrDefaultAsync(x=>x.Id == id);
         return subject;
     }
 

@@ -130,30 +130,16 @@ public class StudentsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, string name, int age, string major, int[] subjectIdDst)
+    public async Task<IActionResult> Edit([Bind("Id, Name, Age, Major, PostalCode")] Student student, int[] subjectIdDst)
     {
-        IActionResult result;
+        IActionResult result = View();
 
-        try
+        if (ModelState.IsValid)
         {
-            bool saveResult = _databaseService.EditStudent(id, name, age, major, subjectIdDst);
-            if (!saveResult)
-            {
-                throw new Exception("Error saving changes to the database.");
-            }
-
-            // Set the result to redirect to the Index action
-            result = RedirectToAction(nameof(Index));
+            student = await _databaseService.CreateStudentAsync(student, subjectIdDst);
+            return RedirectToAction(nameof(Index));
         }
-        catch (Exception ex)
-        {
-            // Log the exception and set the result to return the view with the current student
-            _logger.LogError("Exception caught: " + ex.Message);
-            var student = await _context.Student.FindAsync(id);
-            result = View(student);
-        }
-
-        return result;
+        return View(student);
     }
 
 

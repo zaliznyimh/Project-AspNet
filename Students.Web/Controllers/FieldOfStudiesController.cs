@@ -7,30 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Students.Common.Data;
 using Students.Common.Models;
-using Students.Interfaces;
 
 namespace Students.Web.Controllers;
 
-public class SubjectsController : Controller
+public class FieldOfStudiesController : Controller
 {
     private readonly StudentsContext _context;
-    private readonly IDatabaseService _databaseService;
 
-    public SubjectsController(StudentsContext context,
-                            IDatabaseService databaseService)
+    public FieldOfStudiesController(StudentsContext context)
     {
         _context = context;
-        _databaseService = databaseService;
     }
 
-    // GET: Subjects
+    // GET: FieldOfStudies
     public async Task<IActionResult> Index()
     {
-        var result = await _databaseService.GetSubjectsList();
-        return View(result);
+        return View(await _context.FieldOfStudies.ToListAsync());
     }
 
-    // GET: Subjects/Details/5
+    // GET: FieldOfStudies/Details/5
     public async Task<IActionResult> Details(int? id)
     {
         if (id == null)
@@ -38,44 +33,39 @@ public class SubjectsController : Controller
             return NotFound();
         }
 
-        var subject = await _databaseService.GetSubjectToEditAsync(id);
-        if (subject == null)
+        var fieldOfStudy = await _context.FieldOfStudies
+            .FirstOrDefaultAsync(m => m.Id == id);
+        if (fieldOfStudy == null)
         {
             return NotFound();
         }
 
-        return View(subject);
+        return View(fieldOfStudy);
     }
 
-    // GET: Subjects/Create
-    public async Task<IActionResult> Create()
+    // GET: FieldOfStudies/Create
+    public IActionResult Create()
     {
-        ViewBag.FieldOfStudies = await _context.FieldOfStudies.ToListAsync();
         return View();
     }
 
-    // POST: Subjects/Create
+    // POST: FieldOfStudies/Create
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Name,Credits")] Subject subject, int fieldOfStudyId)
+    public async Task<IActionResult> Create([Bind("Id,Name,DurationOfStudies,NumberOfStudents")] FieldOfStudy fieldOfStudy)
     {
-        var fieldOfStudy = await _context.FieldOfStudies.FindAsync(fieldOfStudyId);
-        if(fieldOfStudy == null)
-        {
-            ModelState.AddModelError("FieldOfStudies", "Select field of study");
-        } 
         if (ModelState.IsValid)
         {
-            subject.FieldOfStudy = fieldOfStudy;
-            var result = await _databaseService.CreateSubjectAsync(subject);
+            _context.Add(fieldOfStudy);
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        return View(subject);
+        return View(fieldOfStudy);
     }
 
-    // GET: Subjects/Edit/5
+    // GET: FieldOfStudies/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
@@ -83,22 +73,22 @@ public class SubjectsController : Controller
             return NotFound();
         }
 
-        var subject = await _databaseService.GetSubjectToEditAsync(id);
-        if (subject == null)
+        var fieldOfStudy = await _context.FieldOfStudies.FindAsync(id);
+        if (fieldOfStudy == null)
         {
             return NotFound();
         }
-        return View(subject);
+        return View(fieldOfStudy);
     }
 
-    // POST: Subjects/Edit/5
+    // POST: FieldOfStudies/Edit/5
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Credits")] Subject subject)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DurationOfStudies,NumberOfStudents")] FieldOfStudy fieldOfStudy)
     {
-        if (id != subject.Id)
+        if (id != fieldOfStudy.Id)
         {
             return NotFound();
         }
@@ -107,11 +97,12 @@ public class SubjectsController : Controller
         {
             try
             {
-               await _databaseService.EditSubject(subject);
+                _context.Update(fieldOfStudy);
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SubjectExists(subject.Id))
+                if (!FieldOfStudyExists(fieldOfStudy.Id))
                 {
                     return NotFound();
                 }
@@ -122,10 +113,10 @@ public class SubjectsController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
-        return View(subject);
+        return View(fieldOfStudy);
     }
 
-    // GET: Subjects/Delete/5
+    // GET: FieldOfStudies/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null)
@@ -133,27 +124,33 @@ public class SubjectsController : Controller
             return NotFound();
         }
 
-        var subject = await _databaseService.GetSubjectToDelete(id);
-        if (subject == null)
+        var fieldOfStudy = await _context.FieldOfStudies
+            .FirstOrDefaultAsync(m => m.Id == id);
+        if (fieldOfStudy == null)
         {
             return NotFound();
         }
 
-        return View(subject);
+        return View(fieldOfStudy);
     }
 
-    // POST: Subjects/Delete/5
+    // POST: FieldOfStudies/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        await _databaseService.DeleteSubject(id);
+        var fieldOfStudy = await _context.FieldOfStudies.FindAsync(id);
+        if (fieldOfStudy != null)
+        {
+            _context.FieldOfStudies.Remove(fieldOfStudy);
+        }
+
+        await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
 
-    private bool SubjectExists(int id)
+    private bool FieldOfStudyExists(int id)
     {
-        var result = _databaseService.CheckSubjectExists(id);
-        return result;
+        return _context.FieldOfStudies.Any(e => e.Id == id);
     }
 }
