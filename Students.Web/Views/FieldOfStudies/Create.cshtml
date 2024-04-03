@@ -1,41 +1,46 @@
-﻿@model Students.Common.Models.FieldOfStudy
+﻿@using Students.Interfaces
+@using System.Globalization
+@model Students.Common.Models.FieldOfStudy
 
 @{
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+@inject ISharedResourcesService sharedResourcesService
 
-<h4>FieldOfStudy</h4>
+<h1> @sharedResourcesService.GetString("Create", cultureInfo) </h1>
+
+<h4>@sharedResourcesService.GetString("FieldOfStudy", cultureInfo)</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label"> @sharedResourcesService.GetString("Name", cultureInfo) </label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DurationOfStudies" class="control-label"></label>
+                <label asp-for="DurationOfStudies" class="control-label"> @sharedResourcesService.GetString("DurationOfStudies", cultureInfo) </label>
                 <input asp-for="DurationOfStudies" class="form-control" />
                 <span asp-validation-for="DurationOfStudies" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumberOfStudents" class="control-label"></label>
+                <label asp-for="NumberOfStudents" class="control-label"> @sharedResourcesService.GetString("NumberOfStudents", cultureInfo) </label>
                 <input asp-for="NumberOfStudents" class="form-control" />
                 <span asp-validation-for="NumberOfStudents" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="@sharedResourcesService.GetString("Create", cultureInfo)" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index"> @sharedResourcesService.GetString("BackToList", cultureInfo) </a>
 </div>
 
 @section Scripts {

@@ -1,47 +1,52 @@
-﻿@model IEnumerable<Students.Common.Models.FieldOfStudy>
+﻿@using Students.Interfaces
+@using System.Globalization
+@model IEnumerable<Students.Common.Models.FieldOfStudy>
 
 @{
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
     ViewData["Title"] = "Index";
 }
+@inject ISharedResourcesService sharedResourcesService
 
-<h1>Index</h1>
+<h1> @sharedResourcesService.GetString("IndexOfField", cultureInfo) </h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"> @sharedResourcesService.GetString("Create", cultureInfo) </a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @sharedResourcesService.GetString("Name", cultureInfo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DurationOfStudies)
+                @sharedResourcesService.GetString("DurationOfStudies", cultureInfo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NumberOfStudents)
+                @sharedResourcesService.GetString("NumberOfStudents", cultureInfo)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DurationOfStudies)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfStudents)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DurationOfStudies)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfStudents)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"> @sharedResourcesService.GetString("Modification", cultureInfo) </a> |
+                    <a asp-action="Details" asp-route-id="@item.Id"> @sharedResourcesService.GetString("Details", cultureInfo) </a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"> @sharedResourcesService.GetString("Removal", cultureInfo) </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

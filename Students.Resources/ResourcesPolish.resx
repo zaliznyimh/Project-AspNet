@@ -135,6 +135,9 @@
   <data name="Book" xml:space="preserve">
     <value>Książka</value>
   </data>
+  <data name="Books" xml:space="preserve">
+    <value>Książki</value>
+  </data>
   <data name="BookTitle" xml:space="preserve">
     <value>Nazwa książki</value>
   </data>
@@ -156,8 +159,14 @@
   <data name="Details" xml:space="preserve">
     <value>Szczegółowe informacje</value>
   </data>
+  <data name="DurationOfStudies" xml:space="preserve">
+    <value>Czas trwania studiów</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Edytuj</value>
+  </data>
+  <data name="FieldOfStudy" xml:space="preserve">
+    <value>Kierunek</value>
   </data>
   <data name="HomePage" xml:space="preserve">
     <value>Strona główna</value>
@@ -180,6 +189,21 @@
   <data name="ISBN" xml:space="preserve">
     <value>ISBN</value>
   </data>
+  <data name="LanguageEnglish" xml:space="preserve">
+    <value>Angielski (USA)</value>
+  </data>
+  <data name="LanguageGerman" xml:space="preserve">
+    <value>Niemiecki (Niemcy)</value>
+  </data>
+  <data name="LanguageJapan" xml:space="preserve">
+    <value>Japoński (Japonia)</value>
+  </data>
+  <data name="LanguagePolski" xml:space="preserve">
+    <value>Polski (Polska)</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Języki</value>
+  </data>
   <data name="LectureName" xml:space="preserve">
     <value>Imię i nazwisko wykładowcy</value>
   </data>
@@ -197,6 +221,9 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nazwa przedmiotu</value>
+  </data>
+  <data name="NumberOfStudents" xml:space="preserve">
+    <value>Liczba studentów</value>
   </data>
   <data name="Operations" xml:space="preserve">
     <value>Operacje</value>

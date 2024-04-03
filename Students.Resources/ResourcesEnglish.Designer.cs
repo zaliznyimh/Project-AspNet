@@ -115,6 +115,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Books.
+        /// </summary>
+        public static string Books {
+            get {
+                return ResourceManager.GetString("Books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Book&apos;s Title.
         /// </summary>
         public static string BookTitle {
@@ -178,6 +187,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Duration of Studies.
+        /// </summary>
+        public static string DurationOfStudies {
+            get {
+                return ResourceManager.GetString("DurationOfStudies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Edit.
         /// </summary>
         public static string Edit {
@@ -187,7 +205,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на FieldOfStudy.
+        ///   Ищет локализованную строку, похожую на Field of Study.
         /// </summary>
         public static string FieldOfStudy {
             get {
@@ -259,6 +277,51 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на English (US).
+        /// </summary>
+        public static string LanguageEnglish {
+            get {
+                return ResourceManager.GetString("LanguageEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на German (Germany).
+        /// </summary>
+        public static string LanguageGerman {
+            get {
+                return ResourceManager.GetString("LanguageGerman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Japanese (Japan).
+        /// </summary>
+        public static string LanguageJapan {
+            get {
+                return ResourceManager.GetString("LanguageJapan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Polish (Poland).
+        /// </summary>
+        public static string LanguagePolski {
+            get {
+                return ResourceManager.GetString("LanguagePolski", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Languages.
+        /// </summary>
+        public static string Languages {
+            get {
+                return ResourceManager.GetString("Languages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Lecture&apos;s name.
         /// </summary>
         public static string LectureName {
@@ -309,6 +372,15 @@ namespace Students.Resources {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Number of Students.
+        /// </summary>
+        public static string NumberOfStudents {
+            get {
+                return ResourceManager.GetString("NumberOfStudents", resourceCulture);
             }
         }
         

@@ -1,36 +1,41 @@
-﻿@model Students.Common.Models.FieldOfStudy
+﻿@using Students.Interfaces
+@using System.Globalization
+@model FieldOfStudy
 
 @{
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
     ViewData["Title"] = "Details";
 }
+@inject ISharedResourcesService sharedResourcesService
 
-<h1>Details</h1>
+<h1> @sharedResourcesService.GetString("Details", cultureInfo) </h1>
 
 <div>
-    <h4>FieldOfStudy</h4>
+    <h4>@sharedResourcesService.GetString("FieldOfStudy", cultureInfo)</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+        <dt class="col-sm-2">
+            @sharedResourcesService.GetString("Name", cultureInfo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DurationOfStudies)
+        <dt class="col-sm-2">
+            @sharedResourcesService.GetString("DurationOfStudies", cultureInfo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DurationOfStudies)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NumberOfStudents)
+        <dt class="col-sm-2">
+            @sharedResourcesService.GetString("NumberOfStudents", cultureInfo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NumberOfStudents)
         </dd>
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">@sharedResourcesService.GetString("Edit", cultureInfo)</a> |
+    <a asp-action="Index"> @sharedResourcesService.GetString("BackToList", cultureInfo) </a>
 </div>
