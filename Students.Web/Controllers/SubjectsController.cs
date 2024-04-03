@@ -82,7 +82,7 @@ public class SubjectsController : Controller
         {
             return NotFound();
         }
-
+        ViewBag.FieldOfStudies = await _context.FieldOfStudies.ToListAsync();
         var subject = await _databaseService.GetSubjectToEditAsync(id);
         if (subject == null)
         {
@@ -96,31 +96,36 @@ public class SubjectsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Credits")] Subject subject)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Credits")] Subject subject, int fieldOfStudyId)
     {
         if (id != subject.Id)
         {
             return NotFound();
         }
-
-        if (ModelState.IsValid)
+        try
         {
-            try
+            var fieldOfStudy = await _context.FieldOfStudies.FindAsync(fieldOfStudyId);
+            if (fieldOfStudy == null)
             {
-               await _databaseService.EditSubject(subject);
+                ModelState.AddModelError("FieldOfStudies", "Select field of study");
             }
-            catch (DbUpdateConcurrencyException)
+            if (ModelState.IsValid)
             {
-                if (!SubjectExists(subject.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                subject.FieldOfStudy = fieldOfStudy;
+                var result = await _databaseService.EditSubject(subject);
+                return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction(nameof(Index));
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!SubjectExists(subject.Id))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
         }
         return View(subject);
     }

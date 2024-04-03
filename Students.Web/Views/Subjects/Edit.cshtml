@@ -29,6 +29,15 @@
                 <span asp-validation-for="Credits" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label for="fieldOfStudyId"> @sharedResourcesService.GetString("FieldOfStudy", cultureInfo) </label>
+                <select name="fieldOfStudyId" class="form-select" aria-label="Choose academic degree">
+                    @foreach (var fieldOfStudy in (ViewBag.FieldOfStudies as List<FieldOfStudy>) ?? new List<FieldOfStudy>())
+                    {
+                        <option value="@fieldOfStudy.Id"> @fieldOfStudy.Name </option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="@sharedResourcesService.GetString("Save", cultureInfo)" class="btn btn-primary" />
             </div>
         </form>

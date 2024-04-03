@@ -187,6 +187,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на FieldOfStudy.
+        /// </summary>
+        public static string FieldOfStudy {
+            get {
+                return ResourceManager.GetString("FieldOfStudy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Home page.
         /// </summary>
         public static string HomePage {

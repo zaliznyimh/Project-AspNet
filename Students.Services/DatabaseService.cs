@@ -247,12 +247,12 @@ public class DatabaseService : IDatabaseService
         return subject;
     }
 
-    public async Task<Subject?> EditSubject(Subject subject)
+    public async Task<bool?> EditSubject(Subject subject)
     {
         _context.Update(subject);
         var saveResult = await _context.SaveChangesAsync();
         var result = saveResult > 0;
-        return subject;
+        return result;
     }
 
     public async Task<Subject?> GetSubjectToDelete(int? id)

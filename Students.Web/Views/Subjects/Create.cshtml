@@ -28,8 +28,9 @@
             </div>
 
             <div class="form-group">
-                <select name="fieldOfStudyId">
-                    @foreach (var fieldOfStudy in ViewBag.FieldOfStudies as List<FieldOfStudy>)
+                <label for="fieldOfStudyId"> @sharedResourcesService.GetString("FieldOfStudy", cultureInfo) </label>
+                <select name="fieldOfStudyId" class="form-select" aria-label="Choose academic degree">
+                    @foreach (var fieldOfStudy in (ViewBag.FieldOfStudies as List<FieldOfStudy>) ?? new List<FieldOfStudy>())
                     {
                         <option value="@fieldOfStudy.Id"> @fieldOfStudy.Name </option>
                     }

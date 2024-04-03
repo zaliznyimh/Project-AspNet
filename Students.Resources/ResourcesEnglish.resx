@@ -159,6 +159,9 @@
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="FieldOfStudy" xml:space="preserve">
+    <value>FieldOfStudy</value>
+  </data>
   <data name="HomePage" xml:space="preserve">
     <value>Home page</value>
   </data>

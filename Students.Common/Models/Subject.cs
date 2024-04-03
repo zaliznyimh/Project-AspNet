@@ -20,7 +20,6 @@ public class Subject
 
     public FieldOfStudy? FieldOfStudy { get; set; } 
 
-
     public Subject()
     {
     }

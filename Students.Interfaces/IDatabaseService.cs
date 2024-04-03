@@ -29,7 +29,7 @@ public interface IDatabaseService
 
     public Task<Subject?> GetSubjectToEditAsync(int? id);
 
-    public Task<Subject?> EditSubject(Subject subject);
+    public Task<bool?> EditSubject(Subject subject);
 
     public Task<Subject?> GetSubjectToDelete (int? id);
     
