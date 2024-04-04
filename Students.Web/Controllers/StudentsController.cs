@@ -58,7 +58,7 @@ public class StudentsController : Controller
 
         try
         {
-            var student = _databaseService.DisplayStudentDetails(id);
+            var student = _databaseService.GetStudentInfoAsync(id);
             result = View(student);
         }
         catch (Exception ex)
@@ -155,7 +155,7 @@ public class StudentsController : Controller
             }
             else
             {
-                var student = _databaseService.DisplayStudentDetails(id);
+                var student = _databaseService.GetStudentInfoAsync(id);
                 if (student == null)
                 {
                     result = NotFound();

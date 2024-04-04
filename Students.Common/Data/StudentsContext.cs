@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
 using Students.Common.Models;
 
 namespace Students.Common.Data;
@@ -31,7 +30,6 @@ public class StudentsContext : DbContext
             .HasOne(ss => ss.Subject)
             .WithMany(s => s.StudentSubjects)
             .HasForeignKey(ss => ss.SubjectId);
-    
-        
+
     }
 }

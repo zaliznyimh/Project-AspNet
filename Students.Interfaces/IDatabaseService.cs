@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Students.Common.Models;
-using System.ComponentModel;
+﻿using Students.Common.Models;
 
 namespace Students.Interfaces;
 
@@ -11,8 +9,7 @@ public interface IDatabaseService
     public bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst);
 
     public Task<Student> EditStudentAsync(Student student, int[] subjectIdDst);
-    Student? DisplayStudentDetails(int? id);
-    
+    Student? GetStudentInfoAsync(int? id);
     public Task<List<Student>> GetStudentsListAsync();
 
     public Task<Student> CreateStudentAsync(Student student, int[] subjectIdDst);
@@ -59,5 +56,11 @@ public interface IDatabaseService
     public Task<bool> DeleteBook(int? id);
     #endregion // IDatabaseService properties for BooksController 
 
-    
+    #region IDatabaseService properties for FieldOfStudieController
+    public Task<List<FieldOfStudy>> GetFieldOfStudyListAsync();
+    public Task<FieldOfStudy?> GetFieldOfStudyInfoAsync(int? id);
+    public Task<bool> CreateFieldOfStudyAsync(FieldOfStudy fieldOfStudy);
+    public Task<FieldOfStudy?> EditFieldOfStudyAsync(FieldOfStudy fieldOfStudy);
+    public Task<bool> DeleteFieldOfStudyAsync(int? id);
+    #endregion // IDatabaseService properties for FieldOfStudieController
 }

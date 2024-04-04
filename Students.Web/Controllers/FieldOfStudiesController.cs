@@ -1,28 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Students.Common.Data;
 using Students.Common.Models;
+using Students.Interfaces;
 
 namespace Students.Web.Controllers;
 
 public class FieldOfStudiesController : Controller
 {
     private readonly StudentsContext _context;
+    private readonly IDatabaseService _databaseService;
 
-    public FieldOfStudiesController(StudentsContext context)
+    public FieldOfStudiesController(StudentsContext context, IDatabaseService databaseService)
     {
         _context = context;
+        _databaseService = databaseService;
     }
 
     // GET: FieldOfStudies
     public async Task<IActionResult> Index()
     {
-        return View(await _context.FieldOfStudies.ToListAsync());
+        var listOfFields = await _databaseService.GetFieldOfStudyListAsync();
+        return View(listOfFields);
     }
 
     // GET: FieldOfStudies/Details/5
@@ -33,8 +32,7 @@ public class FieldOfStudiesController : Controller
             return NotFound();
         }
 
-        var fieldOfStudy = await _context.FieldOfStudies
-            .FirstOrDefaultAsync(m => m.Id == id);
+        var fieldOfStudy = await _databaseService.GetFieldOfStudyInfoAsync(id);
         if (fieldOfStudy == null)
         {
             return NotFound();
@@ -58,8 +56,7 @@ public class FieldOfStudiesController : Controller
     {
         if (ModelState.IsValid)
         {
-            _context.Add(fieldOfStudy);
-            await _context.SaveChangesAsync();
+            var result = await _databaseService.CreateFieldOfStudyAsync(fieldOfStudy);
             return RedirectToAction(nameof(Index));
         }
         return View(fieldOfStudy);
@@ -73,7 +70,7 @@ public class FieldOfStudiesController : Controller
             return NotFound();
         }
 
-        var fieldOfStudy = await _context.FieldOfStudies.FindAsync(id);
+        var fieldOfStudy = await _databaseService.GetFieldOfStudyInfoAsync(id);
         if (fieldOfStudy == null)
         {
             return NotFound();
@@ -95,22 +92,7 @@ public class FieldOfStudiesController : Controller
 
         if (ModelState.IsValid)
         {
-            try
-            {
-                _context.Update(fieldOfStudy);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FieldOfStudyExists(fieldOfStudy.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            var result = await _databaseService.EditFieldOfStudyAsync(fieldOfStudy);
             return RedirectToAction(nameof(Index));
         }
         return View(fieldOfStudy);
@@ -124,8 +106,7 @@ public class FieldOfStudiesController : Controller
             return NotFound();
         }
 
-        var fieldOfStudy = await _context.FieldOfStudies
-            .FirstOrDefaultAsync(m => m.Id == id);
+        var fieldOfStudy = await _databaseService.GetFieldOfStudyInfoAsync(id);
         if (fieldOfStudy == null)
         {
             return NotFound();
@@ -139,18 +120,8 @@ public class FieldOfStudiesController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var fieldOfStudy = await _context.FieldOfStudies.FindAsync(id);
-        if (fieldOfStudy != null)
-        {
-            _context.FieldOfStudies.Remove(fieldOfStudy);
-        }
-
-        await _context.SaveChangesAsync();
+        var result = await _databaseService.DeleteFieldOfStudyAsync(id);
         return RedirectToAction(nameof(Index));
     }
 
-    private bool FieldOfStudyExists(int id)
-    {
-        return _context.FieldOfStudies.Any(e => e.Id == id);
-    }
 }

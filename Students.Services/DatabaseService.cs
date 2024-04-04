@@ -99,7 +99,7 @@ public class DatabaseService : IDatabaseService
         return student;
     }
 
-    public Student? DisplayStudentDetails(int? id)
+    public Student? GetStudentInfoAsync(int? id)
     {
         Student? student = null;
         try
@@ -392,9 +392,51 @@ public class DatabaseService : IDatabaseService
 
     #region FieldOfStudyController Methods
 
+    public async Task<List<FieldOfStudy>> GetFieldOfStudyListAsync()
+    {
+        var listOfFields = new List<FieldOfStudy>();
+        listOfFields = await _context.FieldOfStudies.ToListAsync();
+        return listOfFields;
+    }
 
+    public async Task<FieldOfStudy?> GetFieldOfStudyInfoAsync(int? id) {
+        var fieldOfStudy = await _context.FieldOfStudies
+                                .FirstOrDefaultAsync(m => m.Id == id);
+        return fieldOfStudy;
+    }
+
+    public async Task<bool> CreateFieldOfStudyAsync(FieldOfStudy fieldOfStudy)
+    {
+        var result = false;
+        await _context.AddAsync(fieldOfStudy);
+        var saveResult = await _context.SaveChangesAsync();
+        result = saveResult > 0;
+        return result;
+    }
+
+    public async Task<FieldOfStudy?> EditFieldOfStudyAsync(FieldOfStudy fieldOfStudy)
+    {
+        _context.Update(fieldOfStudy);
+        var saveResult = await _context.SaveChangesAsync();
+        var result = saveResult > 0;
+        return fieldOfStudy;
+    }
+
+    public async Task<bool> DeleteFieldOfStudyAsync(int? id)
+    {
+        var result = false;
+        var fieldOfStudy = await _context.FieldOfStudies.FindAsync(id);
+        if (fieldOfStudy != null)
+        {
+            _context.FieldOfStudies.Remove(fieldOfStudy);
+        }
+
+        var saveResult = await _context.SaveChangesAsync();
+        result = saveResult > 0;
+        return result;
+    }
 
     #endregion //FieldOfStudyController Methods
-    
+
     #endregion // Public Methods
 }
