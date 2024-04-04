@@ -425,7 +425,7 @@ public class DatabaseService : IDatabaseService
     public async Task<bool> DeleteFieldOfStudyAsync(int? id)
     {
         var result = false;
-        var fieldOfStudy = await _context.FieldOfStudies.FindAsync(id);
+        var fieldOfStudy = await _context.FieldOfStudies.Include(x=> x.Subjects).SingleOrDefaultAsync(x => x.Id == id);
         if (fieldOfStudy != null)
         {
             _context.FieldOfStudies.Remove(fieldOfStudy);
