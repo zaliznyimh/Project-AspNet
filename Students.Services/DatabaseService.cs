@@ -168,7 +168,7 @@ public class DatabaseService : IDatabaseService
                 student.AddSubject(chosenSubject);
             }
 
-            _context.Update(student);
+            await _context.Student.AddAsync(student);
             var addResult = await _context.SaveChangesAsync();
             {
                 throw new Exception("An error occurred during saving data");

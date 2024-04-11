@@ -4,10 +4,9 @@ namespace Students.Interfaces;
 
 public interface IDatabaseService
 {
-    #region IDatabaseService properties for StudentsController
-    
-    public bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst);
 
+    #region IDatabaseService properties for StudentsController
+    public bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst);
     public Task<Student> EditStudentAsync(Student student, int[] subjectIdDst);
     Student? GetStudentInfoAsync(int? id);
     public Task<List<Student>> GetStudentsListAsync();

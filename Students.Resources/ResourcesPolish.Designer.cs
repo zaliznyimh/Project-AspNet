@@ -259,7 +259,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Indeks przedmiotu.
+        ///   Ищет локализованную строку, похожую на Indeks przedmiotów.
         /// </summary>
         public static string IndexOfSubject {
             get {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NLog;
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
@@ -10,12 +11,15 @@ public class SubjectsController : Controller
 {
     private readonly StudentsContext _context;
     private readonly IDatabaseService _databaseService;
+    private Logger _logger;
 
     public SubjectsController(StudentsContext context,
-                            IDatabaseService databaseService)
+                            IDatabaseService databaseService,
+                            Logger logger)
     {
         _context = context;
         _databaseService = databaseService;
+        _logger = logger;
     }
 
     // GET: Subjects
@@ -57,10 +61,10 @@ public class SubjectsController : Controller
     public async Task<IActionResult> Create([Bind("Id,Name,Credits")] Subject subject, int fieldOfStudyId)
     {
         var fieldOfStudy = await _context.FieldOfStudies.FindAsync(fieldOfStudyId);
-        if(fieldOfStudy == null)
+        if (fieldOfStudy == null)
         {
             ModelState.AddModelError("FieldOfStudies", "Select field of study");
-        } 
+        }
         if (ModelState.IsValid)
         {
             subject.FieldOfStudy = fieldOfStudy;
@@ -93,34 +97,16 @@ public class SubjectsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Credits")] Subject subject, int fieldOfStudyId)
     {
-        if (id != subject.Id)
+        var fieldOfStudy = await _context.FieldOfStudies.FindAsync(fieldOfStudyId);
+        if (fieldOfStudy == null)
         {
-            return NotFound();
+            ModelState.AddModelError("FieldOfStudies", "Select field of study");
         }
-        try
+        if (ModelState.IsValid)
         {
-            var fieldOfStudy = await _context.FieldOfStudies.FindAsync(fieldOfStudyId);
-            if (fieldOfStudy == null)
-            {
-                ModelState.AddModelError("FieldOfStudies", "Select field of study");
-            }
-            if (ModelState.IsValid)
-            {
-                subject.FieldOfStudy = fieldOfStudy;
-                var result = await _databaseService.EditSubject(subject);
-                return RedirectToAction(nameof(Index));
-            }
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!SubjectExists(subject.Id))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
+            subject.FieldOfStudy = fieldOfStudy;
+            var result = await _databaseService.EditSubject(subject);
+            return RedirectToAction(nameof(Index));
         }
         return View(subject);
     }

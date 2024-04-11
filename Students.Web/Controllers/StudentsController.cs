@@ -186,7 +186,7 @@ public class StudentsController : Controller
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Exception caught: " + ex.Message);
+            _logger.LogError("Exception caught: " + ex.Message);
         }
 
         return result;
