@@ -32,9 +32,8 @@ public class StudentsContext : DbContext
             .HasForeignKey(ss => ss.SubjectId);
 
         modelBuilder.Entity<FieldOfStudy>()
-             .HasMany(fos=> fos.Subjects)
-             .WithOne(ss=>ss.FieldOfStudy)
-             .OnDelete(DeleteBehavior.Restrict);
-
+            .HasMany(fos=> fos.Subjects)
+            .WithOne(ss=>ss.FieldOfStudy)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

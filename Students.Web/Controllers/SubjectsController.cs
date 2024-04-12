@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NLog;
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
+
 
 namespace Students.Web.Controllers;
 
@@ -11,11 +11,11 @@ public class SubjectsController : Controller
 {
     private readonly StudentsContext _context;
     private readonly IDatabaseService _databaseService;
-    private Logger _logger;
+    private readonly ILogger _logger;
 
     public SubjectsController(StudentsContext context,
                             IDatabaseService databaseService,
-                            Logger logger)
+                            ILogger<SubjectsController> logger)
     {
         _context = context;
         _databaseService = databaseService;

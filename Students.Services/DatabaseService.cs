@@ -302,7 +302,7 @@ public class DatabaseService : IDatabaseService
 
     public async Task<Lecturer?> GetLecturerInfo(int? id)
     {
-        var lecturer = await _context.Lecturers.FirstOrDefaultAsync(m => m.Id == id);
+        var lecturer = await _context.Lecturers.FirstOrDefaultAsync(l => l.Id == id);
         return lecturer;
     }
 
@@ -326,6 +326,7 @@ public class DatabaseService : IDatabaseService
     {
         var result = false;
         var lecturer = await _context.Lecturers.FindAsync(id);
+        
         if (lecturer != null)
         {
             _context.Lecturers.Remove(lecturer);
@@ -366,7 +367,6 @@ public class DatabaseService : IDatabaseService
         result = saveResult > 0;
         return result;
     }
-
     public async Task<Book?> EditBook(Book book)
     {
         _context.Update(book);
@@ -398,13 +398,11 @@ public class DatabaseService : IDatabaseService
         listOfFields = await _context.FieldOfStudies.ToListAsync();
         return listOfFields;
     }
-
     public async Task<FieldOfStudy?> GetFieldOfStudyInfoAsync(int? id) {
         var fieldOfStudy = await _context.FieldOfStudies
                                 .FirstOrDefaultAsync(m => m.Id == id);
         return fieldOfStudy;
     }
-
     public async Task<bool> CreateFieldOfStudyAsync(FieldOfStudy fieldOfStudy)
     {
         var result = false;
@@ -413,15 +411,13 @@ public class DatabaseService : IDatabaseService
         result = saveResult > 0;
         return result;
     }
-
-    public async Task<FieldOfStudy?> EditFieldOfStudyAsync(FieldOfStudy fieldOfStudy)
+    public async Task<bool> EditFieldOfStudyAsync(FieldOfStudy fieldOfStudy)
     {
         _context.Update(fieldOfStudy);
         var saveResult = await _context.SaveChangesAsync();
         var result = saveResult > 0;
-        return fieldOfStudy;
+        return result;
     }
-
     public async Task<bool> DeleteFieldOfStudyAsync(int? id)
     {
         var result = false;

@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Students.Common.Attributes;
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
-using Students.Services;
-using System.ComponentModel.DataAnnotations;
 
 namespace Students.Web.Controllers;
 
@@ -14,18 +11,18 @@ public class StudentsController : Controller
     #region Ctor And Properties
 
     private readonly StudentsContext _context;
-    private readonly ILogger _logger;
     private readonly ISharedResourcesService _sharedResourcesService;
+    private readonly ILogger _logger;
     private readonly IDatabaseService _databaseService;
 
     public StudentsController(
         StudentsContext context,
-        ILogger<StudentsController> logger,
         ISharedResourcesService sharedResourcesService,
-        IDatabaseService databaseService)
+        IDatabaseService databaseService,
+        ILogger<StudentsController> logger)
     {
-        _context = context;
         _logger = logger;
+        _context = context;
         _sharedResourcesService = sharedResourcesService;
         _databaseService = databaseService;
     }

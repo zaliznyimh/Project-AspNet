@@ -9,10 +9,10 @@
 }
 @inject ISharedResourcesService sharedResourcesService
 
-<h1> @sharedResourcesService.GetString("IndexOfField") </h1>
+<h1> @sharedResourcesService.GetString("IndexOfBook") </h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"> @sharedResourcesService.GetString("Create") </a>
 </p>
 <table class="table">
     <thead>

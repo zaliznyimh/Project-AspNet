@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
-using Students.Common.Attributes;
+﻿using Students.Common.Attributes;
+using System.ComponentModel.DataAnnotations;
 using Xunit;
 
 namespace Students.Tests;
@@ -72,7 +71,5 @@ public class AttributesTests
         // Assert         
         Assert.NotEqual(ValidationResult.Success, result);
     }
-
-
 
 }

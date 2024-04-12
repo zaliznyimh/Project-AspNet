@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Students.Common.Models;
+﻿namespace Students.Common.Models;
 
 public class FieldOfStudy
 {
@@ -21,4 +15,3 @@ public class FieldOfStudy
     }
 
 }
-
