@@ -232,6 +232,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на 索引.
+        /// </summary>
+        public static string IndexOfBook {
+            get {
+                return ResourceManager.GetString("IndexOfBook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на 分野別索引.
         /// </summary>
         public static string IndexOfField {

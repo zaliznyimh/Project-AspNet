@@ -174,6 +174,9 @@
   <data name="HomeScreen" xml:space="preserve">
     <value>To jest mój projekt na platformie AspNet Core</value>
   </data>
+  <data name="IndexOfBook" xml:space="preserve">
+    <value>Lista książek</value>
+  </data>
   <data name="IndexOfField" xml:space="preserve">
     <value>Indeks kierunków studiów</value>
   </data>
