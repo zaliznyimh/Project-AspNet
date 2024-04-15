@@ -87,10 +87,7 @@ public class DatabaseService : IDatabaseService
             }
 
             _context.Add(student);
-            var addResult = await _context.SaveChangesAsync();
-            {
-                throw new Exception("An error occurred during saving data");
-            }
+            await _context.SaveChangesAsync();
         }
         catch (Exception ex)
         {
@@ -169,10 +166,7 @@ public class DatabaseService : IDatabaseService
             }
 
             await _context.Student.AddAsync(student);
-            var addResult = await _context.SaveChangesAsync();
-            {
-                throw new Exception("An error occurred during saving data");
-            }
+            await _context.SaveChangesAsync();
         }
         catch (Exception ex)
         {
@@ -234,10 +228,9 @@ public class DatabaseService : IDatabaseService
     #region SubjectsController Methods
     public async Task<bool> CreateSubjectAsync(Subject subject)
     {
-        var result = false; 
         await _context.AddAsync(subject);
         var saveResult = await _context.SaveChangesAsync();
-        result = saveResult > 0;
+        var result = saveResult > 0;
         return result;
     } 
 
@@ -264,7 +257,6 @@ public class DatabaseService : IDatabaseService
 
     public async Task<bool> DeleteSubject(int? id)
     {
-        var result = false;
         var subject = await _context.Subject.FindAsync(id);
         if (subject != null)
         {
@@ -272,7 +264,7 @@ public class DatabaseService : IDatabaseService
         }
 
         var saveResult = await _context.SaveChangesAsync();
-        result = saveResult > 0;
+        var result = saveResult > 0;
         return result;
     }
 
@@ -308,10 +300,9 @@ public class DatabaseService : IDatabaseService
 
     public async Task<bool> CreateLecturerAsync(Lecturer lecturer)
     {
-        var result = false;
         await _context.AddAsync(lecturer);
         var saveResult = await _context.SaveChangesAsync();
-        result = saveResult > 0;
+        var result = saveResult > 0;
         return result;
     }
 
@@ -324,16 +315,14 @@ public class DatabaseService : IDatabaseService
     }
     public async Task<bool> DeleteLecturer(int? id)
     {
-        var result = false;
         var lecturer = await _context.Lecturers.FindAsync(id);
-        
         if (lecturer != null)
         {
             _context.Lecturers.Remove(lecturer);
         }
 
         var saveResult = await _context.SaveChangesAsync();
-        result = saveResult > 0;
+        var result = saveResult > 0;
         return result;
 
     }
@@ -361,10 +350,9 @@ public class DatabaseService : IDatabaseService
     }
     public async Task<bool> CreateBookAsync(Book book)
     {
-        var result = false;
         await _context.AddAsync(book);
         var saveResult = await _context.SaveChangesAsync();
-        result = saveResult > 0;
+        var result = saveResult > 0;
         return result;
     }
     public async Task<Book?> EditBook(Book book)
@@ -376,7 +364,6 @@ public class DatabaseService : IDatabaseService
     }
     public async Task<bool> DeleteBook(int? id)
     {
-        var result = false;
         var bookToDelete = await _context.Book.FindAsync(id);
         if (bookToDelete != null)
         {
@@ -384,7 +371,7 @@ public class DatabaseService : IDatabaseService
         }
 
         var saveResult = await _context.SaveChangesAsync();
-        result = saveResult > 0;
+        var result = saveResult > 0;
         return result;
     }
 
@@ -405,10 +392,9 @@ public class DatabaseService : IDatabaseService
     }
     public async Task<bool> CreateFieldOfStudyAsync(FieldOfStudy fieldOfStudy)
     {
-        var result = false;
         await _context.AddAsync(fieldOfStudy);
         var saveResult = await _context.SaveChangesAsync();
-        result = saveResult > 0;
+        var result = saveResult > 0;
         return result;
     }
     public async Task<bool> EditFieldOfStudyAsync(FieldOfStudy fieldOfStudy)
@@ -420,7 +406,6 @@ public class DatabaseService : IDatabaseService
     }
     public async Task<bool> DeleteFieldOfStudyAsync(int? id)
     {
-        var result = false;
         var fieldOfStudy = await _context.FieldOfStudies.Include(x=> x.Subjects).SingleOrDefaultAsync(x => x.Id == id);
         if (fieldOfStudy != null)
         {
@@ -428,7 +413,7 @@ public class DatabaseService : IDatabaseService
         }
 
         var saveResult = await _context.SaveChangesAsync();
-        result = saveResult > 0;
+        var result = saveResult > 0;
         return result;
     }
 
