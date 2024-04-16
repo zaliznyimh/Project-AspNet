@@ -39,12 +39,12 @@ public class SharedResourcesService : ISharedResourcesService
                 resourceManager = new ResourceManager("Students.Resources.ResourcesPolish", typeof(ResourcesPolish).Assembly);
             }
             else if (string.Equals(cultureInfo.Name, "en-US") ||
-                    string.Equals(cultureInfo.Name, "en-GB"))
+                     string.Equals(cultureInfo.Name, "en-GB"))
             {
                 resourceManager = new ResourceManager("Students.Resources.ResourcesEnglish", typeof(ResourcesEnglish).Assembly);
             }
             else if (string.Equals(cultureInfo.Name, "de-de") ||
-                    string.Equals(cultureInfo.Name, "de-DE"))
+                     string.Equals(cultureInfo.Name, "de-DE"))
             {
                 resourceManager = new ResourceManager("Students.Resources.ResourcesGerman", typeof(ResourcesGerman).Assembly);
             }

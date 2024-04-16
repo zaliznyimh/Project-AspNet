@@ -417,7 +417,7 @@ public class DatabaseService : IDatabaseService
         return result;
     }
 
-    #endregion //FieldOfStudyController Methods
+    #endregion // FieldOfStudyController Methods
 
     #endregion // Public Methods
 }
